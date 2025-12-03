@@ -4,11 +4,26 @@ console.log("Welcome to the Music App!");
 // localhost:3000/topics chủ đề bài hát
 
 import express, { Express, Request, Response } from 'express';
+import dotenv from 'dotenv';
+import * as database from './config/database';
+
+// kết nối database
+database.connect();
+
+dotenv.config();
+// config env
+
 const app : Express = express();
-const port: number =3000;
+const port: number | String = process.env.PORT || 3000;
+
+app.set(`views`, `./views`);
+
+app.set(`view engine`, `pug`);
+
 
 app.get('/topics', (req: Request, res: Response) => {
-    res.send('Danh sách các chủ đề bài hát');
+    // res.send('Danh sách các chủ đề bài hát');
+    res.render('client/pages/topics/index');
 });
 
 app.listen(port, () => {
