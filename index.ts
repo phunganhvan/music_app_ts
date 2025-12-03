@@ -6,6 +6,7 @@ console.log("Welcome to the Music App!");
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import * as database from './config/database';
+import Topic from './models/topic.model';
 
 dotenv.config();
 // config env
@@ -23,8 +24,11 @@ app.set(`views`, `./views`);
 app.set(`view engine`, `pug`);
 
 
-app.get('/topics', (req: Request, res: Response) => {
+app.get('/topics', async (req: Request, res: Response) => {
     // res.send('Danh sách các chủ đề bài hát');
+    const topics = await Topic.find({
+        deleted: false,
+    })
     res.render('client/pages/topics/index');
 });
 
