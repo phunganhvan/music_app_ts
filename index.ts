@@ -3,10 +3,10 @@ console.log("Welcome to the Music App!");
 
 // localhost:3000/topics chủ đề bài hát
 
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import * as database from './config/database';
-import Topic from './models/topic.model';
+import ClientRoute from './routes/client/index.route';
 
 dotenv.config();
 // config env
@@ -24,13 +24,8 @@ app.set(`views`, `./views`);
 app.set(`view engine`, `pug`);
 
 
-app.get('/topics', async (req: Request, res: Response) => {
-    // res.send('Danh sách các chủ đề bài hát');
-    const topics = await Topic.find({
-        deleted: false,
-    })
-    res.render('client/pages/topics/index');
-});
+// Client Routes
+ClientRoute(app);
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
