@@ -7,11 +7,13 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import * as database from './config/database';
 
+dotenv.config();
+// config env
+
 // kết nối database
 database.connect();
 
-dotenv.config();
-// config env
+
 
 const app : Express = express();
 const port: number | String = process.env.PORT || 3000;
