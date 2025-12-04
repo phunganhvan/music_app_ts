@@ -1,3 +1,18 @@
+/* footer chân trang  */
+html{
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main{
+    flex: 1;
+}
+
+
 /* header  */
 .header {
     background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
@@ -23,10 +38,18 @@
 /* end header  */
 
 /* topic item  */
+.card{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .card img {
   width: 75%; /* Chiếm toàn bộ chiều rộng của thẻ .card (đã là 50% hàng) */
   height: 360px; /* Chiều cao cố định */
   object-fit: cover; /* Giữ tỷ lệ ảnh và lấp đầy khung 250px */
+  border-radius: 12px;
+  margin-top: 10px;
 }
 /* end topic item  */
 
@@ -59,7 +82,92 @@
 /* end box head  */
 
 
+/* song item  */
+.row {
+  /* Kích hoạt Flexbox trên hàng để căn chỉnh các cột con */
+  display: flex;
+  flex-wrap: wrap; /* Cho phép tự động xuống dòng khi cần, nhưng giữ cố định 2 item */
+}
 
+.col-6 {
+  /* Đảm bảo mỗi item (.song-item) chiếm hết chiều cao của cột */
+  display: flex;
+}
+
+.song-item {
+  /* Kế thừa từ .col-6, đảm bảo chiếm toàn bộ chiều cao */
+  height: 100%; 
+  /* ... giữ nguyên các thuộc tính hiển thị khác của bạn ... */
+}
+.song-item {
+  width: 100%;
+  display: flex; /* Dùng Flexbox để căn chỉnh ảnh và nội dung cạnh nhau */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  padding: 10px;
+  border: 1px solid #4B5B6D; /* Viền xám đậm */
+  border-radius: 8px;
+  background-color: #1A2937; /* Nền xanh than (tông màu header cũ) */
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.song-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: #293846; /* Nền tối hơn khi hover */
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 3. Định dạng Ảnh (inner-image) */
+/* ---------------------------------------------------------------------- */
+.song-item .inner-image {
+  flex-shrink: 0; /* Không co lại khi không gian hẹp */
+  width: 90px; /* Chiều rộng cố định cho ảnh */
+  height: 90px; /* Chiều cao cố định (Tạo hình vuông 1:1) */
+  margin-right: 15px;
+  overflow: hidden; /* Cắt bớt phần ảnh thừa */
+  border-radius: 4px;
+}
+
+.song-item .inner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
+}
+
+/* ---------------------------------------------------------------------- */
+/* 4. Định dạng Nội dung (inner-content) */
+/* ---------------------------------------------------------------------- */
+.song-item .inner-content {
+  flex-grow: 1; /* Cho phép phần nội dung chiếm hết không gian còn lại */
+  display: flex;
+  flex-direction: column;
+}
+
+.song-item .inner-title a {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #88AABB; /* Màu bạc sáng cho tiêu đề */
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* ... khi quá dài */
+}
+
+.song-item .inner-singer,
+.song-item .inner-like,
+.song-item .inner-time {
+  font-size: 0.85rem;
+  color: #AABBCF; /* Màu chữ phụ nhẹ nhàng */
+  line-height: 1.5;
+}
+
+.song-item i {
+  margin-right: 5px;
+  color: #4B5B6D; /* Màu icon xám đậm nổi bật nhẹ */
+}
+/* end song item  */
 
 
 /* footer  */
