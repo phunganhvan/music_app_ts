@@ -10,6 +10,6 @@ export const topics= async (req: Request, res: Response) => {
     })
     res.render('client/pages/topics/index', {
         pageTitle: 'Topics',
-        topics: topics,
+        listTopic: topics,
     });
 }

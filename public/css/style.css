@@ -22,6 +22,15 @@
 
 /* end header  */
 
+/* topic item  */
+.card img {
+  width: 75%; /* Chiếm toàn bộ chiều rộng của thẻ .card (đã là 50% hàng) */
+  height: 360px; /* Chiều cao cố định */
+  object-fit: cover; /* Giữ tỷ lệ ảnh và lấp đầy khung 250px */
+}
+/* end topic item  */
+
+
 /* box head  */
 .box-head h1,
 .box-head h2,
