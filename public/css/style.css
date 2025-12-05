@@ -15,7 +15,7 @@ body {
 
 /* header  */
 .header {
-    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    background: linear-gradient(90deg, #3b4651 0%, #293846 100%);
     /* linear-gradient(90deg, #1A2937 0%, #08121B 100%); - xanh đen */
     border-bottom: none;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -36,6 +36,57 @@ body {
 }
 
 /* end header  */
+/* MENU */
+.header .inner-menu ul {
+    list-style: none; /* Bỏ dấu chấm */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Hiển thị các mục menu theo hàng ngang */
+    justify-content: flex-end; /* Căn menu sang phải của cột */
+    align-items: center;
+    height: 100%; /* Đảm bảo menu căn giữa chiều cao với logo */
+}
+
+.header .inner-menu ul li {
+    margin-left: 25px; /* Khoảng cách giữa các mục menu */
+    position: relative;
+}
+
+.header .inner-menu ul li a {
+    color: #FFFFFF; /* Màu chữ trắng cho dễ nhìn trên nền gradient xanh đen */
+    text-decoration: none; /* Bỏ gạch chân */
+    font-size: 1.1rem; /* Kích thước chữ */
+    font-weight: 500; /* Độ đậm vừa phải */
+    padding: 5px 0; /* Khoảng padding trên dưới */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.header .inner-menu ul li a:hover {
+    color: #88AABB; /* Màu bạc sáng khi hover, lấy từ gradient chữ */
+    /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); Thêm hiệu ứng phát sáng nhẹ */
+    transform: translateY(-2px); /* Nhấc nhẹ lên khi hover */
+}
+
+/* Thêm hiệu ứng gạch chân hiện đại */
+.header .inner-menu ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px; /* Độ dày gạch chân */
+    background: #88AABB; /* Màu bạc sáng */
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px; /* Vị trí dưới chữ */
+    left: 0;
+    border-radius: 2px;
+}
+
+.header .inner-menu ul li a:hover::after,
+.header .inner-menu ul li a.active::after { /* Dành cho mục đang hoạt động */
+    width: 100%;
+}
+
 
 /* topic item  */
 .card{
@@ -168,6 +219,201 @@ body {
   color: #4B5B6D; /* Màu icon xám đậm nổi bật nhẹ */
 }
 /* end song item  */
+
+/* song detail css  */
+
+/* ====================================================================== */
+/* CẤU HÌNH TỔNG QUÁT VÀ TIÊU ĐỀ */
+/* ====================================================================== */
+/* ====================================================================== */
+/* CẤU HÌNH TỔNG QUÁT VÀ TIÊU ĐỀ */
+/* ====================================================================== */
+.singer-detail {
+    /* Nền chính: Xám Than (giống tông đậm nhất của Header/Footer) */
+    background-color: #121C26; 
+    color: #fff;
+    padding-bottom: 50px;
+}
+
+.singer-detail .inner-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    /* Gradient chữ Bạc/Kim loại sắc nét hơn */
+    background: linear-gradient(90deg, #E0E7ED 0%, #88AABB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; 
+}
+
+/* ====================================================================== */
+/* KHU VỰC THÔNG TIN & HÀNH ĐỘNG (.inner-actions) */
+/* ====================================================================== */
+.inner-actions {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px 30px; 
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    /* Viền ngăn cách: Xám than lạnh */
+    border-bottom: 1px solid rgba(75, 91, 109, 0.5); 
+}
+
+.inner-action {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    /* Màu chữ phụ: Xám bạc trung tính */
+    color: #C0C8D0; 
+    font-weight: 500;
+}
+
+.inner-action i {
+    font-size: 1.1rem;
+    margin-right: 8px;
+    /* Màu icon: Xám xanh đậm */
+    color: #4B5B6D; 
+}
+
+/* Hiệu ứng đặc biệt cho nút hành động (Yêu thích) */
+.inner-heart {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.inner-heart:hover {
+    /* Màu nổi bật: Xanh ngọc hoặc Xanh sáng */
+    color: #A8EDE7; 
+}
+
+/* ====================================================================== */
+/* KHU VỰC CHƠI NHẠC (.inner-play) */
+/* ====================================================================== */
+.inner-play {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 1. ĐỊNH NGHĨA KEYFRAMES (HIỆU ỨNG QUAY) */
+/* ---------------------------------------------------------------------- */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. ÁP DỤNG ANIMATION CHO AVATAR */
+/* ---------------------------------------------------------------------- */
+.inner-avatar img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 8px rgba(136, 170, 187, 0.1), 0 0 25px rgba(0, 0, 0, 0.6);
+    
+    /* Áp dụng hiệu ứng quay tròn */
+    animation: spin 10s linear infinite; /* Quay 10 giây/vòng, tốc độ đều, lặp vô hạn */
+    animation-play-state: paused;
+    /* Chỉnh lại transition và transform cho hiệu ứng hover (nếu cần) */
+    transition: all 0.4s ease;
+}
+
+/* Loại bỏ transform: scale/rotate khi hover, nếu bạn muốn chỉ có hiệu ứng quay */
+.inner-avatar img:hover {
+    animation-play-state: paused; /* Ngừng quay khi di chuột qua  - running xoay*/ 
+    /* Bạn có thể thêm lại hiệu ứng scale/rotate khác nếu thích: 
+    transform: scale(1.05); */
+}
+
+.inner-avatar img:hover {
+    transform: scale(1.02) rotate(1deg); 
+}
+
+.inner-audio {
+    flex-grow: 1;
+}
+
+/* Audio Player */
+/* .inner-audio audio {
+    width: 100%;
+    min-width: 300px;
+    border-radius: 50px; */
+    /* Nền audio player: Xám trung tính */
+    /* background: #4B5B6D;  */
+/* } */
+.aplayer-title,
+.aplayer-author {
+  color: black !important;
+  font-weight: bold;
+}
+
+/* ====================================================================== */
+/* MÔ TẢ & LỜI BÀI HÁT (.inner-desc) */
+/* ====================================================================== */
+.inner-desc {
+    margin-bottom: 30px;
+    padding: 20px;
+    /* Nền khối nội dung: Xám than đậm hơn một chút */
+    background-color: #1A2937; 
+    border-radius: 10px;
+    border: 1px solid #293846;
+}
+
+.inner-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    /* Màu nhãn: Bạc/Xám sáng */
+    color: #88AABB; 
+    /* Đường kẻ phân cách: Xám xanh đậm */
+    border-bottom: 2px solid #4B5B6D; 
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.inner-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #E0E7ED; 
+    white-space: pre-wrap; 
+}
+
+
+
+/* end song detail css   */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* footer  */

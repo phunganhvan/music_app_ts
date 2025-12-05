@@ -31,10 +31,44 @@ export const listSongsByTopic = async (req: Request, res: Response) => {
         })
         song["singerInfo"] = singerInfo;
     }
-    console.log(songs);
     res.render("client/pages/songs/index", {
         pageTitle: topic.title,
         songs: songs,
         // listSong: list,
+    });
+}
+
+// [GET] /songs/detail/:slugSong
+export const detail = async (req: Request, res: Response) => {
+    const song = await Song.findOne({
+        slug: req.params.slugSong,  
+        status: "active",
+        deleted: false,
+    });
+    // thông tin bài hát
+    if(!song) {
+        res.redirect("/");
+    }
+    const singerInfo = await Singer.find({
+        _id: song.singerId,
+        status: "active",
+        deleted: false,
+    });
+    
+    // thông tin ca sĩ
+    const topic= await Topic.findOne({
+        _id: song.topicId,
+        status: "active",
+        deleted: false,
+    });
+    // thông tin chủ đề
+
+    song["singerName"] = singerInfo[0].fullName;
+    song["topicTitle"] = topic.title;
+    res.render("client/pages/songs/detail", {
+        pageTitle: song.title,
+        song: song,
+        singerInfo: singerInfo,
+        topic: topic,
     });
 }
