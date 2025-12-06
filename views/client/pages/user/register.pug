@@ -1,0 +1,42 @@
+extends ../../layout/default.pug 
+
+block main  
+    .register-page
+        .container
+            .row.justify-content-center
+                .col-8.col-md-6.col-lg-5
+                    .register-box
+                        h1.text-center.mb-4 Đăng kí tài khoản
+                        form(
+                            action="/user/register"
+                            method="POST"
+                        )
+                            .mb-3
+                                label(for="fullName") Họ và tên
+                                input#fullName.form-control(
+                                    type="text"
+                                    name="fullName"
+                                    required
+                                )
+
+                            .mb-3
+                                label(for="email") Email
+                                input#email.form-control(
+                                    type="email"
+                                    name="email"
+                                    required
+                                )
+
+                            .mb-3
+                                label(for="password") Mật khẩu
+                                input#password.form-control(
+                                    type="password"
+                                    name="password"
+                                    required
+                                )
+
+                            button.btn.btn-gradient.w-100(type="submit") Đăng kí
+
+                        p.text-center.mt-3
+                            | Đã có tài khoản?
+                            a(href="/user/login" class="text-primary ms-1 fw-semibold") Đăng nhập

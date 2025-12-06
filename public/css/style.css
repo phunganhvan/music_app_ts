@@ -473,3 +473,122 @@ body {
 }
 
 /* end footer  */
+
+
+
+/* register css  */
+/* ==================================== */
+/* 🚀 REGISTER PAGE STYLES */
+/* ==================================== */
+
+.register-page {
+    padding: 60px 0; /* Khoảng cách trên dưới */
+    min-height: calc(100vh - 100px); /* Đảm bảo chiều cao trang đủ (ví dụ trừ đi chiều cao header/footer) */
+    background: #E8EDF1; /* Nền xám nhạt, sạch sẽ */
+}
+
+/* BOX CONTAINER */
+.register-box {
+    background: #FFFFFF; /* Nền trắng */
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05); /* Shadow tinh tế */
+    transition: transform 0.3s ease;
+}
+
+.register-box:hover {
+    transform: translateY(-3px); /* Hiệu ứng nhấc nhẹ khi hover (nếu muốn) */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADING */
+.register-box h1 {
+    /* Áp dụng lại phong cách Metal Gradient cho tiêu đề form */
+    color: #3A4958;
+    font-weight: 700;
+    font-size: 2rem;
+    background: linear-gradient(90deg, #88AABB, #4B5B6D); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px !important; 
+}
+
+/* FORM LABELS */
+.register-box label {
+    font-weight: 600;
+    color: #4B5B6D; /* Màu xám xanh đậm, dễ đọc */
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* FORM INPUTS */
+.register-box .form-control {
+    border-radius: 8px;
+    border: 1px solid #D1D9E6; /* Viền nhẹ */
+    padding: 10px 15px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.register-box .form-control:focus {
+    border-color: #4B5B6D; /* Viền đậm hơn khi focus */
+    box-shadow: 0 0 0 0.25rem rgba(75, 91, 109, 0.25); /* Focus ring tùy chỉnh */
+}
+
+/* SUBMIT BUTTON (btn-gradient) */
+.btn-gradient {
+    /* Sử dụng gradient kim loại/xanh đen làm nút chính */
+    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(41, 56, 70, 0.3); /* Shadow cho nút */
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); /* Thay đổi gradient khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nhấc nhẹ */
+    box-shadow: 0 6px 15px rgba(41, 56, 70, 0.4);
+    color: #FFFFFF;
+}
+
+/* LOGIN LINK */
+.register-page p.text-center {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.register-page a.text-primary {
+    color: #4B5B6D !important; /* Thay màu xanh primary của Bootstrap thành màu chủ đạo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-page a.text-primary:hover {
+    color: #88AABB !important; /* Màu bạc sáng khi hover */
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 📱 RESPONSIVE ADJUSTMENTS (Optional) */
+/* ==================================== */
+@media (max-width: 576px) {
+    .register-page {
+        padding: 30px 15px;
+    }
+    .register-box {
+        padding: 30px 25px;
+    }
+    .register-box h1 {
+        font-size: 1.75rem;
+    }
+}
+/* end register css  */
