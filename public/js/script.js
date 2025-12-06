@@ -1,5 +1,22 @@
 console.log("ok");
 
+// logic cho alert 
+
+const showAlert = document.querySelector("[show-alert]");
+
+if (showAlert) {
+    const time = parseInt(showAlert.getAttribute("data-time"));
+    const closeAlert = showAlert.querySelector("[close-alert]");
+    // console.log(closeAlert);
+    closeAlert.addEventListener("click", () => {
+        showAlert.classList.add("alert-hidden")
+        return;
+    })
+    setTimeout(() => {
+        showAlert.classList.add("alert-hidden")
+    }, time)
+}
+
 // APlayer 
 const songData = document.getElementById('aplayer').getAttribute('data-song');
 if (songData) {
@@ -64,3 +81,4 @@ if (likeButton) {
 }
 
 // end button like
+

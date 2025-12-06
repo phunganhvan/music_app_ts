@@ -8,4 +8,6 @@ router.get('/register', controller.register);
 router.post('/register', validate.registerPost ,controller.postRegister);
 
 router.get('/login', controller.login);
+
+router.post('/login', validate.loginPost ,controller.postLogin);
 export const UserRoute: Router = router;

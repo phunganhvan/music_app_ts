@@ -734,3 +734,88 @@ body {
     text-decoration: underline;
 }
 /* end login css  */
+
+/* alert css  */
+
+/* ==================================== */
+/* 🔔 ALERT MESSAGES STYLES */
+/* ==================================== */
+
+/* Container chung cho các thông báo */
+[show-alert] {
+    position: fixed;
+    top: 20px; /* Vị trí phía trên */
+    right: 280px; /* Vị trí bên phải */
+    z-index: 1050; /* Đảm bảo nằm trên các thành phần khác */
+    
+    /* Thiết kế chung */
+    padding: 15px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* opacity: 0; Mặc định ẩn, sẽ hiển thị bằng JS */
+    /* visibility: hidden; */
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateX(100%); /* Bắt đầu từ ngoài màn hình */
+    min-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Khi thông báo được hiển thị (có thể thêm class .show bằng JS) */
+/* [show-alert].show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); Trượt vào từ bên phải */
+/* } */
+
+/* --- SUCCESS ALERT --- */
+.alert-success {
+    /* Màu xanh lá cây thân thiện, phối hợp với màu chủ đạo */
+    background: linear-gradient(135deg, #A8E6CF 0%, #00BFA5 100%); 
+    color: #005A4E; /* Màu chữ xanh đậm */
+    border: 1px solid #00BFA5;
+}
+
+/* --- ERROR ALERT --- */
+.alert-danger {
+    /* Màu đỏ đậm, chuyên nghiệp, phối hợp với màu chủ đạo */
+    background: linear-gradient(135deg, #FFC1CC 0%, #D32F2F 100%); 
+    color: #4B0000; /* Màu chữ đỏ đậm */
+    border: 1px solid #D32F2F;
+}
+
+
+/* CLOSE BUTTON (x) */
+[close-alert] {
+    margin-left: 15px;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+[close-alert]:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Đảm bảo màu chữ 'x' rõ ràng trên nền */
+.alert-success [close-alert] {
+    color: #005A4E; 
+}
+.alert-danger [close-alert] {
+    color: #4B0000;
+}
+[show-alert].alert-hidden {
+  animation-name: alert-hidden;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.alert-hidden {
+  display: none;
+}
+/* end alert css  */
