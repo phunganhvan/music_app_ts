@@ -276,15 +276,34 @@ body {
     color: #4B5B6D; 
 }
 
-/* Hiệu ứng đặc biệt cho nút hành động (Yêu thích) */
-.inner-heart {
+/* Hiệu ứng đặc biệt nút like  */
+.inner-like i{
     cursor: pointer;
+    color: #0059FF;
     transition: color 0.3s ease;
 }
-
-.inner-heart:hover {
+.inner-like:hover i{
     /* Màu nổi bật: Xanh ngọc hoặc Xanh sáng */
-    color: #A8EDE7; 
+    color: #00CFFF; 
+}
+
+.singer-detail .inner-like.active {
+    color: #0059FF; 
+}
+.inner-like.active i{
+    font-weight: 900;
+}
+/* end nút like  */
+/* Hiệu ứng đặc biệt cho nút hành động (Yêu thích) */
+.inner-heart i{
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #f814d6; 
+}
+
+.inner-heart:hover i{
+    /* Màu nổi bật: Xanh ngọc hoặc Xanh sáng */
+    color: #f814d6; 
 }
 
 /* ====================================================================== */

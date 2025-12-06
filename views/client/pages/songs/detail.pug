@@ -21,9 +21,10 @@ block main
                             i(class="fa-solid fa-music")
                             |  #{topic.title}
 
-                        div(class="inner-action inner-like")
+                        div(class="inner-action inner-like" button-like=song.id)
                             i(class="fa-regular fa-thumbs-up")
-                            |  #{song.like} yêu thích
+                            span #{song.like} yêu thích
+                        
 
                         div(class="inner-action inner-heart")
                             i(class="fa-regular fa-heart")

@@ -25,6 +25,42 @@ if (songData) {
     });
 }
 
-
-
 // end aplayer
+
+// button like
+const likeButton = document.querySelector('[button-like]');
+console.log(likeButton);
+if (likeButton) {
+    likeButton.addEventListener('click', function () {
+        const songId = this.getAttribute('button-like');
+        const isActive = this.classList.contains('active');
+        // chứa hay không lớp 'liked'
+        let a="";
+        if(!isActive){
+            a="yes";
+        }else{
+            a="no";
+        }
+
+        const link = `/songs/like/${a}/${songId}`;
+        const option = {
+            method: 'PATCH',
+        }
+        fetch(link, option)
+            .then(response => response.json())
+            .then(data => {
+                // console.log('Success:', data);
+                // Cập nhật số lượt thích trên giao diện
+                const likeSpan = likeButton.querySelector('span');
+                if (likeSpan && data.like !== undefined) {
+                    likeSpan.innerHTML = ` ${data.like} yêu thích`;
+                    likeButton.classList.toggle('active'); // Thêm lớp 'liked' để thay đổi giao diện nút
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+}
+
+// end button like
