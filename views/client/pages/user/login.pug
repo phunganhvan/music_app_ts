@@ -1,5 +1,5 @@
-extends ../../layouts/default.pug
-include ../../mixins/alert.pug
+extends ../../layout/default.pug
+
 
 block main 
     
@@ -15,5 +15,10 @@ block main
                     input#password.form-control(type="password" name="password" required)
                 .mb-3
                     button.btn.btn-login.w-100(type="submit") Đăng nhập
+
+            // DÒNG MỚI ĐƯỢC THÊM VÀO
+            p.text-center.mt-3.mb-3
+                | Chưa có tài khoản?
+                a(href="/user/register" class="text-primary ms-1 fw-semibold") Đăng ký
 
             a.text-center.forgot-link(href="/user/password/forgot") Quên mật khẩu?

@@ -6,7 +6,7 @@ import * as generate from "../../helpers/generate";
 
 export const register = (req: any, res: any) => {
     res.render("client/pages/user/register", {
-        title: "Đăng Ký Tài Khoản",
+        title: "Đăng Ký",
     });
 }
 
@@ -28,3 +28,12 @@ export const postRegister = async (req: any, res: any) => {
 };
 
 // [GET] /user/login
+export const login = (req: any, res: any) => {
+    if (res.locals.user){
+        res.redirect("/");
+        return;
+    }
+    res.render("client/pages/user/login", {
+        title: "Đăng Nhập",
+    });
+};

@@ -6,4 +6,6 @@ import * as validate from '../../validates/client/user.validate'
 router.get('/register', controller.register);
 
 router.post('/register', validate.registerPost ,controller.postRegister);
+
+router.get('/login', controller.login);
 export const UserRoute: Router = router;
