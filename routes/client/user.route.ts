@@ -21,4 +21,9 @@ router.post('/password/forgot', validate.forgotPasswordPost ,controller.postForg
 router.get('/password/otp', controller.otpPassword);
 
 router.post('/password/otp' ,controller.postOtpPassword);
+
+// reset password
+router.get('/password/reset', controller.resetPassword);
+router.post('/password/reset', validate.resetPasswordPost ,controller.postResetPassword);   
+
 export const UserRoute: Router = router;

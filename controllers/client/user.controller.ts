@@ -147,3 +147,23 @@ export const postOtpPassword = async (req: any, res: any) => {
     req.flash("success", "Xác minh OTP thành công! Vui lòng đặt lại mật khẩu.");
     res.redirect("/user/password/reset");
 }
+
+// [GET] /user/password/reset
+export const resetPassword = (req: any, res: any) => {
+    res.render("client/pages/user/reset-password", {
+        pageTitle: "Đặt Lại Mật Khẩu",
+    });
+};
+
+// [POST] /user/password/reset
+export const postResetPassword = async (req: any, res: any) => {
+    const newPassword = md5(req.body.password);
+    const tokenUser = req.cookies.tokenUser;
+    await User.updateOne(
+        { tokenUser: tokenUser },
+        { password: newPassword }
+    );
+    res.clearCookie("tokenUser");
+    req.flash("success", "Đặt lại mật khẩu thành công! Vui lòng đăng nhập.");
+    res.redirect("/user/login");
+}
