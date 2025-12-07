@@ -14,4 +14,11 @@ router.post('/login', validate.loginPost ,controller.postLogin);
 router.get('/logout', controller.logout);
 
 router.get('/password/forgot', controller.forgotPassword);
+
+router.post('/password/forgot', validate.forgotPasswordPost ,controller.postForgotPassword);
+
+// nhập otp
+router.get('/password/otp', controller.otpPassword);
+
+router.post('/password/otp' ,controller.postOtpPassword);
 export const UserRoute: Router = router;
