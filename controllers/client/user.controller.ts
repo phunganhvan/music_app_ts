@@ -48,4 +48,32 @@ export const postLogin = async (req: any, res: any) => {
     const user= await User.findOne({
         email: email,
     });
+    if(!user){
+        req.flash("error", "Email không tồn tại!");
+        res.redirect(req.get("Referer"));
+        return;
+    }
+    if(user.password !== password){
+        req.flash("error", "Mật khẩu không đúng!");
+        res.redirect(req.get("Referer"));
+        return;
+    }
+    console.log(user);
+    res.locals.user= user
+    console.log("user login", res.locals.user);
+    res.cookie("tokenUser", user.tokenUser)
+    req.flash("success", "Đăng nhập thành công!");
+    res.redirect("/topics");
+};
+// [GET] /user/logout
+export const logout = (req: any, res: any) => {
+    res.clearCookie("tokenUser");
+    req.flash("success", "Đăng xuất thành công!");
+    res.redirect("/user/login");
+}
+// [GET] /user/password/forgot
+export const forgotPassword = (req: any, res: any) => {
+    res.render("client/pages/user/forgot-password", {
+        title: "Quên Mật Khẩu",
+    });
 };

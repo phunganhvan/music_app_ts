@@ -8,6 +8,7 @@ export const topics= async (req: Request, res: Response) => {
     const topics = await Topic.find({
         deleted: false,
     })
+    console.log(res.locals.user);
     res.render('client/pages/topics/index', {
         pageTitle: 'Topics',
         listTopic: topics,

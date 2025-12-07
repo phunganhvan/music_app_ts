@@ -10,4 +10,8 @@ router.post('/register', validate.registerPost ,controller.postRegister);
 router.get('/login', controller.login);
 
 router.post('/login', validate.loginPost ,controller.postLogin);
+
+router.get('/logout', controller.logout);
+
+router.get('/password/forgot', controller.forgotPassword);
 export const UserRoute: Router = router;
