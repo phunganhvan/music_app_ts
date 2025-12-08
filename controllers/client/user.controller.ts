@@ -59,9 +59,7 @@ export const postLogin = async (req: any, res: any) => {
         res.redirect(req.get("Referer"));
         return;
     }
-    console.log(user);
     res.locals.user= user
-    console.log("user login", res.locals.user);
     res.cookie("tokenUser", user.tokenUser)
     req.flash("success", "Đăng nhập thành công!");
     res.redirect("/topics");
@@ -166,4 +164,18 @@ export const postResetPassword = async (req: any, res: any) => {
     res.clearCookie("tokenUser");
     req.flash("success", "Đặt lại mật khẩu thành công! Vui lòng đăng nhập.");
     res.redirect("/user/login");
+}
+
+// [GET] /user/info
+export const userInfo= async (req: any, res: any) => {
+    res.render("client/pages/user/info", {
+        pageTitle: "Thông Tin Người Dùng",
+    });
+}
+
+// [GET] /user/info/edit
+export const editUserInfo= async (req: any, res: any) => {
+    res.render("client/pages/user/edit-info", {
+        pageTitle: "Chỉnh Sửa Thông Tin Người Dùng",
+    });
 }

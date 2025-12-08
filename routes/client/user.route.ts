@@ -3,6 +3,8 @@ import md5 from 'md5';
 const router: Router = Router();
 import * as controller from '../../controllers/client/user.controller';
 import * as validate from '../../validates/client/user.validate'
+import * as authMiddleware from '../../middlewares/client/auth.middleware'
+
 router.get('/register', controller.register);
 
 router.post('/register', validate.registerPost ,controller.postRegister);
@@ -24,6 +26,13 @@ router.post('/password/otp' ,controller.postOtpPassword);
 
 // reset password
 router.get('/password/reset', controller.resetPassword);
+
 router.post('/password/reset', validate.resetPasswordPost ,controller.postResetPassword);   
+
+// info người dùng
+router.get('/info', authMiddleware.requireAuth, controller.userInfo);
+
+router.get('/info/edit', authMiddleware.requireAuth, controller.editUserInfo);
+
 
 export const UserRoute: Router = router;

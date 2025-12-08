@@ -10,6 +10,7 @@ import ClientRoute from './routes/client/index.route';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import flash from 'express-flash';
+import methodOverride from 'method-override';
 dotenv.config();
 // config env
 
@@ -24,8 +25,11 @@ app.use(cookieParser('keyboard cat'));
 app.use(session({cookie: {maxAge: 60000}}));
 app.use(flash());
 app.use(express.static('public'));
-app.set(`views`, `./views`);
 
+//override method PATCH
+app.use(methodOverride('_method'));
+
+app.set(`views`, `./views`);
 app.set(`view engine`, `pug`);
 app.use(express.urlencoded({ extended: true }));
 

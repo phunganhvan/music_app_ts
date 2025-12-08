@@ -819,3 +819,87 @@ body {
   display: none;
 }
 /* end alert css  */
+
+
+/* user info  */
+/* 1. Nút Đăng ký (Đăng ký) - Dùng class .regis */
+.header .inner-menu ul li a.regis {
+    /* Sử dụng màu bạc sáng, tương tự như hiệu ứng hover của menu */
+    background: #88AABB; 
+    color: #293846; /* Màu chữ xanh đen */
+    padding: 8px 15px; 
+    border-radius: 6px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    border: none;
+    line-height: 1.5; /* Căn chỉnh lại chiều cao */
+}
+
+.header .inner-menu ul li a.regis:hover {
+    background: #FFFFFF; /* Nền trắng khi hover */
+    color: #4B5B6D;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
+.header .inner-menu ul li a.regis::after {
+    display: none;
+}
+
+/* 2. Nút Tên người dùng (user.fullName) - Dùng class .btn.btn-primary */
+.header .inner-menu ul li a.btn-primary {
+    /* Sử dụng Metal Gradient/Xanh đen đậm để nổi bật khi đã đăng nhập */
+    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.header .inner-menu ul li a.btn-primary:hover {
+    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+}
+
+/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
+.header .inner-menu ul li a.btn-primary::after {
+    display: none;
+}
+
+/* 3. Link Đăng xuất và Đăng nhập (Mục menu thường) */
+.header .inner-menu ul li a.nav-link {
+    /* Sử dụng lại style link menu đã định nghĩa */
+    color: #FFFFFF; 
+    text-decoration: none; 
+    font-size: 1.1rem; 
+    font-weight: 500; 
+    padding: 5px 0; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.header .inner-menu ul li a.nav-link:hover {
+    color: #88AABB; 
+    transform: translateY(-2px); 
+}
+
+/* Thêm khoảng cách nhẹ cho các mục li */
+.header .inner-menu ul li.nav-item {
+    margin-left: 20px;
+}
+
+/* Điều chỉnh lại khoảng cách ms-2 trong Pug */
+.header .inner-menu ul li a.ms-2 {
+    margin-left: 15px !important; /* Dùng !important nếu muốn override Bootstrap ms-2 */
+}
+/* end user info  */
