@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import flash from 'express-flash';
 import methodOverride from 'method-override';
+import moment from 'moment';
 dotenv.config();
 // config env
 
@@ -32,6 +33,8 @@ app.use(methodOverride('_method'));
 app.set(`views`, `./views`);
 app.set(`view engine`, `pug`);
 app.use(express.urlencoded({ extended: true }));
+
+app.locals.moment = moment;
 
 // Client Routes
 ClientRoute(app);

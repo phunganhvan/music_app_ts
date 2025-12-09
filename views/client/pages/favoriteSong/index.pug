@@ -1,5 +1,6 @@
 extends ../../layout/default.pug
 include ../../mixins/box-head.pug
+include ../../mixins/moment.pug
 
 block main
     .container.my-3
@@ -25,6 +26,6 @@ block main
                                 |  Yêu thích
                             div(class="inner-time")
                                 i(class="fa-regular fa-clock")
-                                |  Hôm nay
+                                    +formatDateTime(song.addedAt)
 
 

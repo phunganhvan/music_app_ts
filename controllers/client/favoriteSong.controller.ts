@@ -9,7 +9,7 @@ export const index = async (req: Request, res: Response) => {
     const favoriteSongs = await FavoriteSong.find({
         userId: userId,
         deleted: false,
-    }).select("songId");    
+    }).select("songId createdAt");    
     const songIds = favoriteSongs.map(fav => fav.songId);
     const songs = await Song.find({
         _id: { $in: songIds },
@@ -26,9 +26,9 @@ export const index = async (req: Request, res: Response) => {
                 songId: song._id.toString(),
                 userId: req.cookies.userId,
             });
-        
         song["isFavorite"] = favoriteSong ? true : false;
         song["singerInfo"] = singerInfo;
+        song["addedAt"] = favoriteSong.createdAt;
     }
     res.render("client/pages/favoriteSong/index", {
         pageTitle: "Bài hát yêu thích",
