@@ -4,6 +4,8 @@ include ../../mixins/box-head.pug
 block main
     .singer-detail
         .container
+            .row 
+                #toast(style="position: fixed; top: 20px; right: 30px; padding: 15px 30px; background: linear-gradient(90deg, #00BFA5 0%, #00897B 100%); color: #FFFFFF; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); font-weight: 600; display: none; width: 320px;")
             .row
                 .col-12
                     .inner-title #{song.title}
@@ -26,9 +28,9 @@ block main
                             span #{song.like} yêu thích
                         
 
-                        div(class="inner-action inner-heart")
+                        div(class=`inner-action inner-heart${song.isFavorite ? ' active' : ''}` button-favorite=song.id)
                             i(class="fa-regular fa-heart")
-                            |  Bài hát yêu thích
+                            span Bài hát yêu thích
 
                     .inner-play
                         .inner-avatar

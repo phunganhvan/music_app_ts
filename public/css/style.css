@@ -303,7 +303,14 @@ body {
 
 .inner-heart:hover i{
     /* Màu nổi bật: Xanh ngọc hoặc Xanh sáng */
-    color: #f814d6; 
+    color: #f85be1; 
+}
+.singer-detail .inner-heart.active {
+    color: #f814d6;
+}
+.inner-heart.active i{
+    font-weight: 900!important;
+    /* color: #f814d6;  */
 }
 
 /* ====================================================================== */
