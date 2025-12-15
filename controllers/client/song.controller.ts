@@ -157,3 +157,20 @@ export const favorite = async (req: Request, res: Response) => {
         });
     }
 }
+
+// [PATCH] /songs/listen/:songId
+export const listen = async (req: Request, res: Response) => {
+    const songId = req.params.songId;
+    const song = await Song.findOne({ _id: songId });
+    if (!song) {
+        return res.status(404).json({ message: "Song not found" });
+    }
+    const newListenCount: number = song.listen + 1;
+    await Song.updateOne({ _id: songId }, { listen: newListenCount });
+    const songNew= await Song.findOne({ _id: songId });
+    res.status(200).json({
+        code: 200,
+        message: "Listen count updated successfully",
+        listen: songNew.listen,
+    });
+}

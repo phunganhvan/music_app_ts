@@ -26,6 +26,9 @@ block main
                             i(class="fa-regular fa-thumbs-up")
                             span #{song.like} yêu thích
                         
+                        div(class= "inner-action inner-listen")
+                            i.fa-solid.fa-headphones
+                            span #{song.listen} lượt nghe
 
                         div(class=`inner-action inner-heart${song.isFavorite ? ' active' : ''}` button-favorite=song.id)
                             i(class="fa-regular fa-heart")

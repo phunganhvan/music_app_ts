@@ -34,6 +34,34 @@ if (song) {
             }],
             autoplay: true,
         });
+        let audioDuration
+        ap.on('loadedmetadata', () => {
+            // console.log('Duration:', ap.duration);
+            audioDuration = ap.duration;
+            setTimeout(() => {
+                ap.on('ended', function () {
+                    avatar.style.animationPlayState = 'paused'; // Dừng quay khi kết thúc nhạc
+
+                    const link = `/songs/listen/${song._id}`;
+                    const option = {
+                        method: 'PATCH',
+                        credentials: 'include'
+                    }
+                    fetch(link, option)
+                        .then(response => response.json())
+                        .then(data => {
+                            // console.log('Success:', data);
+                            const eInnerListenSpan = document.querySelector('.singer-detail .inner-listen span');
+                            if (eInnerListenSpan && data.listen !== undefined) {
+                                eInnerListenSpan.innerHTML = `${data.listen} lượt nghe`;
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                });
+            }, audioDuration * 1000 -5000); // Chuyển đổi giây thành mili giây
+        });
         const avatar = document.querySelector('.inner-avatar img');
         ap.on('play', function () {
             avatar.style.animationPlayState = 'running'; // Bắt đầu quay khi phát nhạc
@@ -42,6 +70,8 @@ if (song) {
         ap.on('pause', function () {
             avatar.style.animationPlayState = 'paused'; // Dừng quay khi tạm dừng nhạc
         });
+
+        
     }
 }
 
@@ -170,7 +200,7 @@ if (boxSearch) {
                         suggestBox.classList.add('show');
 
                         const htmls = songs.map(song => {
-                            return`
+                            return `
                                 <a href="/songs/detail/${song.slug}" class="inner-item">
                                     <div class="inner-image">
                                         <img src="${song.avatar}" alt="${song.title}">
@@ -187,7 +217,6 @@ if (boxSearch) {
                         // console.log(htmls);
                         const boxList = suggestBox.querySelector('.inner-list');
                         boxList.innerHTML = htmls.join(""); // join lại
-                        console.log(boxList.innerHTML);
                     } else {
                         suggestBox.classList.remove('show');
                     }
