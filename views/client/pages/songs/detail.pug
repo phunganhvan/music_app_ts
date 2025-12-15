@@ -1,11 +1,10 @@
 extends ../../layout/default.pug
 include ../../mixins/box-head.pug
-
+include ../../mixins/toast.pug
 block main
     .singer-detail
         .container
-            .row 
-                #toast(style="position: fixed; top: 20px; right: 30px; padding: 15px 30px; background: linear-gradient(90deg, #00BFA5 0%, #00897B 100%); color: #FFFFFF; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); font-weight: 600; display: none; width: 320px;")
+            +toast()
             .row
                 .col-12
                     .inner-title #{song.title}

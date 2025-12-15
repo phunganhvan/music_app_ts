@@ -1,14 +1,11 @@
 extends ../../layout/default.pug
 include ../../mixins/box-head.pug
-include ../../mixins/moment.pug
-include ../../mixins/toast.pug
-block main
-    .container.my-3
-        +toast()
-        .row
-            .col-12
-                +box-head(pageTitle)
 
+block main 
+    .container.my-3 
+        .row 
+            .col-12 
+                +box-head(pageTitle)
         .row
             each song in songs
                 .col-6.col-md-6.mb-3
@@ -21,12 +18,10 @@ block main
                                 a(href=`/songs/detail/${song.slug}`) #{song.title}
                             div(class="inner-singer")
                                 i(class="fa-solid fa-microphone-lines") 
-                                |  #{song.singerInfo[0].fullName}
-                            div(class=`inner-heart${song.isFavorite ? ' active' : ''}` button-favorite=song.id)
-                                i.fa-regular.fa-heart
-                                |  Yêu thích
+                                |  #{song.singerInfo.fullName}
+                            div(class="inner-like")
+                                i(class="fa-solid fa-thumbs-up")
+                                |  #{song.like} lượt thích
                             div(class="inner-time")
                                 i(class="fa-regular fa-clock")
-                                    +formatDateTime(song.addedAt)
-
-
+                                |  Hôm nay

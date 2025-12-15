@@ -1,26 +1,71 @@
 header.header
     .container
         .row.align-items-center
-            .col-3
+            .col-1
                 .inner-logo
                     a(href="/")
                         img(src="/images/s.png", alt="Logo")
-            .col-9
-                .inner-menu
-                    ul.d-flex.align-items-center.justify-content-end
-                        li.nav-item
-                            a.nav-link(href="/") <i class="fa-solid fa-house"></i> Trang chủ
-                        li.nav-item
-                            a.nav-link(href="/topics") <i class="fa-solid fa-music"></i> Chủ đề
-                        //- Logic hiển thị tùy theo trạng thái đăng nhập
-                        if user
+            if user
+                .col-3
+                    .box-search
+                        form(action="/search/result" method="GET")
+                            div(class="form-group d-flex mb-0")
+                                input(
+                                    type="text"
+                                    placeholder="Nhập từ khóa..."
+                                    class="form-control"
+                                    name="keyword"
+                                    value=keyword
+                                )
+                                button(
+                                    type="submit"
+                                    class="btn btn-primary"
+                                ) Tìm kiếm
+                        .inner-suggest
+                            .inner-list
+        
+                .col-8
+                    .inner-menu
+                        ul.d-flex.align-items-center.justify-content-end
+                            li.nav-item
+                                a.nav-link(href="/") <i class="fa-solid fa-house"></i> Trang chủ
+                            li.nav-item
+                                a.nav-link(href="/topics") <i class="fa-solid fa-music"></i> Chủ đề
+                            //- Logic hiển thị tùy theo trạng thái đăng nhập
                             li.nav-item
                                 a.nav-link(href="/favorite-songs") <i class="fa-regular fa-heart"></i> Bài hát yêu thích
                             li.nav-item
                                 a.btn.btn-primary.ms-2(href="/user/info") #{user.fullName}
                             li.nav-item
                                 a.nav-link(href="/user/logout") Đăng xuất
-                        else
+            else 
+                .col-5
+                    .box-search
+                        form(action="/search/result" method="GET")
+                            div(class="form-group d-flex mb-0")
+                                input(
+                                    type="text"
+                                    placeholder="Nhập từ khóa..."
+                                    class="form-control"
+                                    name="keyword"
+                                    value=keyword
+                                )
+                                button(
+                                    type="submit"
+                                    class="btn btn-primary"
+                                ) Tìm kiếm
+                        .inner-suggest
+                            .inner-list     
+                                  
+                .col-6
+                    .inner-menu
+                        ul.d-flex.align-items-center.justify-content-end
+                            li.nav-item
+                                a.nav-link(href="/") <i class="fa-solid fa-house"></i> Trang chủ
+                            li.nav-item
+                                a.nav-link(href="/topics") <i class="fa-solid fa-music"></i> Chủ đề
+                            //- Logic hiển thị tùy theo trạng thái đăng nhập
+                            
                             li.nav-item
                                 a.nav-link(href="/user/login") Đăng nhập
                             li.nav-item

@@ -38,6 +38,8 @@ body {
 /* end header  */
 /* MENU */
 .header .inner-menu ul {
+    position: relative;
+    right: -56px;
     list-style: none; /* Bỏ dấu chấm */
     margin: 0;
     padding: 0;
@@ -82,11 +84,322 @@ body {
     border-radius: 2px;
 }
 
+/* user info  */
+/* 1. Nút Đăng ký (Đăng ký) - Dùng class .regis */
+.header .inner-menu ul li a.regis {
+    /* Sử dụng màu bạc sáng, tương tự như hiệu ứng hover của menu */
+    /* position: relative; */
+    background: #88AABB; 
+    color: #293846; /* Màu chữ xanh đen */
+    padding: 8px 15px; 
+    border-radius: 6px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    border: none;
+    line-height: 1.5; /* Căn chỉnh lại chiều cao */
+    /* right: 10px; */
+}
+
+.header .inner-menu ul li a.regis:hover {
+    background: #FFFFFF; /* Nền trắng khi hover */
+    color: #4B5B6D;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
+.header .inner-menu ul li a.regis::after {
+    display: none;
+}
+
+/* 2. Nút Tên người dùng (user.fullName) - Dùng class .btn.btn-primary */
+.header .inner-menu ul li a.btn-primary {
+    /* Sử dụng Metal Gradient/Xanh đen đậm để nổi bật khi đã đăng nhập */
+    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.header .inner-menu ul li a.btn-primary:hover {
+    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+}
+
+/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
+.header .inner-menu ul li a.btn-primary::after {
+    display: none;
+}
+
+/* 3. Link Đăng xuất và Đăng nhập (Mục menu thường) */
+.header .inner-menu ul li a.nav-link {
+    /* Sử dụng lại style link menu đã định nghĩa */
+    color: #FFFFFF; 
+    text-decoration: none; 
+    font-size: 1.1rem; 
+    font-weight: 500; 
+    padding: 5px 0; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.header .inner-menu ul li a.nav-link:hover {
+    color: #88AABB; 
+    transform: translateY(-2px); 
+}
+
+/* Thêm khoảng cách nhẹ cho các mục li */
+.header .inner-menu ul li.nav-item {
+    margin-left: 20px;
+}
+
+/* Điều chỉnh lại khoảng cách ms-2 trong Pug */
+.header .inner-menu ul li a.ms-2 {
+    margin-left: 15px !important; /* Dùng !important nếu muốn override Bootstrap ms-2 */
+}
+/* end user info  */
+
 .header .inner-menu ul li a:hover::after,
 .header .inner-menu ul li a.active::after { /* Dành cho mục đang hoạt động */
     width: 100%;
 }
 
+/* search css  */
+/* ==================================== */
+/* 🔎 HEADER SEARCH BOX STYLES */
+/* ==================================== */
+
+.header .box-search {
+    padding: 0 15px; /* Thêm padding nhẹ để không quá sát các cột khác */
+}
+
+/* Container của Form và Input/Button */
+.header .box-search .form-group {
+    /* Đảm bảo căn chỉnh và sắp xếp các thành phần con */
+    display: flex;
+    align-items: center;
+    border: 1px solid #D1D9E6; /* Viền nhẹ đồng bộ với inputs */
+    border-radius: 8px; /* Bo góc nhẹ */
+    overflow: hidden; /* Quan trọng: giúp input và button liền mạch */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.header .box-search .form-group:focus-within {
+    border-color: #4B5B6D; /* Viền đậm hơn khi focus */
+    box-shadow: 0 1px 6px rgba(75, 91, 109, 0.3); 
+}
+
+/* Input text */
+.header .box-search .form-control {
+    flex-grow: 1; /* Chiếm hết không gian còn lại */
+    border: none; /* Bỏ border mặc định của form-control */
+    border-radius: 0; /* Bỏ bo góc mặc định */
+    padding: 8px 15px;
+    font-size: 1rem;
+    height: auto;
+    box-shadow: none; /* Bỏ box-shadow mặc định */
+}
+
+.header .box-search .form-control:focus {
+    box-shadow: none;
+}
+
+/* Button Tìm kiếm */
+/* ==================================== */
+/* 🔎 HEADER SEARCH BOX STYLES (Cập nhật Button) */
+/* ==================================== */
+
+/* Container của Form và Input/Button */
+.header .box-search .form-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #D1D9E6; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.header .box-search .form-group:focus-within {
+    border-color: #4B5B6D;
+    box-shadow: 0 1px 6px rgba(75, 91, 109, 0.3); 
+}
+
+/* Input text (Giữ nguyên để đảm bảo liền mạch) */
+.header .box-search .form-control {
+    flex-grow: 1; 
+    border: none;
+    border-radius: 0; 
+    padding: 8px 15px;
+    font-size: 1rem;
+    height: auto;
+    box-shadow: none;
+}
+
+/* 🌟 CẬP NHẬT NÚT TÌM KIẾM (btn-primary) 🌟 */
+.header .box-search .btn-primary {
+    /* Sử dụng Metal Gradient mạnh hơn cho nút */
+    background: linear-gradient(90deg, #5A6D80 0%, #293846 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px; 
+    padding: 8px 18px; /* Tăng padding ngang lên 18px */
+    font-weight: 700; /* Làm chữ đậm hơn */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    white-space: nowrap; 
+    
+    /* Thiết lập border-left để phân tách với input rõ ràng hơn */
+    border-left: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: inset 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow nhấn chìm nhẹ */
+}
+
+.header .box-search .btn-primary:hover {
+    background: linear-gradient(90deg, #6C8296 0%, #354554 100%); /* Thay đổi gradient khi hover */
+    transform: none; 
+}
+
+/* ==================================== */
+/* 📱 RESPONSIVE ADJUSTMENTS (Nếu cần thu hẹp) */
+/* ==================================== */
+@media (max-width: 992px) {
+    /* Trên màn hình nhỏ hơn, giảm padding và kích thước text */
+    .header .box-search {
+        padding: 0 10px;
+    }
+    .header .box-search .form-control,
+    .header .box-search .btn-primary {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+}
+/* end search css   */
+
+/* ==================================== */
+/* 💡 SEARCH SUGGESTIONS STYLES (VER 3.0 - Căn chỉnh & Hoàn thiện) */
+/* ==================================== */
+
+.header .box-search {
+    position: relative;
+    z-index: 100;
+}
+
+.header .box-search .inner-suggest {
+    position: absolute; /* ⬅️ CHUYỂN TỪ RELATIVE SANG ABSOLUTE */
+    top: 100%; 
+    left: 0;           /* ⬅️ ĐẶT VỊ TRÍ BẮT ĐẦU TỪ BIÊN TRÁI CỦA .box-search */
+    right: 0;          /* ⬅️ KẾT THÚC Ở BIÊN PHẢI CỦA .box-search */
+    
+    /* left: 15px; */  /* XÓA: left: 15px và right: 15px sẽ làm hộp gợi ý hẹp hơn form tìm kiếm */
+    /* right: 15px; */ /* XÓA */
+
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    
+    padding: 8px 0; 
+    margin-top: 8px; 
+    max-height: 450px;
+    overflow-y: auto; 
+    display: none; 
+}
+
+/* Hiển thị khi có class .show */
+.header .box-search .inner-suggest.show {
+    display: block;
+    z-index: 1000; /* Giữ nguyên giá trị tối ưu */
+}
+.header .box-search {
+    position: relative; /* CHẮC CHẮN PHẢI CÓ ĐỂ .inner-suggest DỰA VÀO */
+    z-index: 100;
+    padding: 0 15px;
+}
+
+/* Mục gợi ý */
+.header .box-search .inner-suggest .inner-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px; /* Tối ưu hóa padding dọc để item trông không quá dày */
+    text-decoration: none;
+    color: #4B5B6D;
+    transition: background 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.header .box-search .inner-suggest .inner-item:hover {
+    background: #F0F2F5; 
+    transform: translateX(3px); /* Hiệu ứng trượt nhẹ nổi bật hơn */
+}
+
+/* 🎯 Hình ảnh đại diện (Tối ưu căn chỉnh) */
+.header .box-search .inner-suggest .inner-image {
+    width: 48px; /* Tăng kích thước ảnh lên 48px */
+    height: 48px;
+    overflow: hidden;
+    border-radius: 6px; 
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Shadow nhẹ làm nổi ảnh */
+}
+
+.header .box-search .inner-suggest .inner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Thông tin chi tiết */
+.header .box-search .inner-suggest .inner-info {
+    /* Đã được căn giữa theo chiều dọc nhờ align-items: center trên .inner-item */
+    flex-grow: 1;
+    overflow: hidden;
+    /* Căn chỉnh lại các thành phần con để chúng không bị quá sát */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Căn giữa nội dung info nếu có không gian */
+}
+
+/* Tiêu đề bài hát */
+.header .box-search .inner-suggest .inner-title {
+    font-weight: 700; 
+    font-size: 1.05rem; 
+    color: #293846; 
+    /* Đảm bảo không có margin/padding thừa */
+    margin-bottom: 2px; 
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+/* Ca sĩ */
+.header .box-search .inner-suggest .inner-singer {
+    font-size: 0.9rem; /* Giảm nhẹ để phân biệt với title */
+    color: #6c757d;
+    margin-top: 0; /* Đã xử lý khoảng cách bằng margin-bottom trên title */
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header .box-search .inner-suggest .inner-singer i {
+    color: #88AABB; 
+    margin-right: 5px;
+    font-size: 0.85rem; /* Giảm icon nhẹ */
+}
 
 /* topic item  */
 .card{
@@ -415,31 +728,6 @@ body {
 
 
 /* end song detail css   */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* footer  */
@@ -828,85 +1116,3 @@ body {
 /* end alert css  */
 
 
-/* user info  */
-/* 1. Nút Đăng ký (Đăng ký) - Dùng class .regis */
-.header .inner-menu ul li a.regis {
-    /* Sử dụng màu bạc sáng, tương tự như hiệu ứng hover của menu */
-    background: #88AABB; 
-    color: #293846; /* Màu chữ xanh đen */
-    padding: 8px 15px; 
-    border-radius: 6px;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    border: none;
-    line-height: 1.5; /* Căn chỉnh lại chiều cao */
-}
-
-.header .inner-menu ul li a.regis:hover {
-    background: #FFFFFF; /* Nền trắng khi hover */
-    color: #4B5B6D;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-}
-
-/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
-.header .inner-menu ul li a.regis::after {
-    display: none;
-}
-
-/* 2. Nút Tên người dùng (user.fullName) - Dùng class .btn.btn-primary */
-.header .inner-menu ul li a.btn-primary {
-    /* Sử dụng Metal Gradient/Xanh đen đậm để nổi bật khi đã đăng nhập */
-    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
-    color: #FFFFFF;
-    font-weight: 700;
-    padding: 8px 15px;
-    border-radius: 6px;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
-    line-height: 1.5;
-}
-
-.header .inner-menu ul li a.btn-primary:hover {
-    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); 
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    color: #FFFFFF;
-}
-
-/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
-.header .inner-menu ul li a.btn-primary::after {
-    display: none;
-}
-
-/* 3. Link Đăng xuất và Đăng nhập (Mục menu thường) */
-.header .inner-menu ul li a.nav-link {
-    /* Sử dụng lại style link menu đã định nghĩa */
-    color: #FFFFFF; 
-    text-decoration: none; 
-    font-size: 1.1rem; 
-    font-weight: 500; 
-    padding: 5px 0; 
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: block;
-}
-
-.header .inner-menu ul li a.nav-link:hover {
-    color: #88AABB; 
-    transform: translateY(-2px); 
-}
-
-/* Thêm khoảng cách nhẹ cho các mục li */
-.header .inner-menu ul li.nav-item {
-    margin-left: 20px;
-}
-
-/* Điều chỉnh lại khoảng cách ms-2 trong Pug */
-.header .inner-menu ul li a.ms-2 {
-    margin-left: 15px !important; /* Dùng !important nếu muốn override Bootstrap ms-2 */
-}
-/* end user info  */
