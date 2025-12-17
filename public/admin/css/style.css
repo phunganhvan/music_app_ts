@@ -1,0 +1,235 @@
+/* ==================================== */
+/* 🛠️ ADMIN THEME VARIABLES (MODERNIZED) */
+/* ==================================== */
+:root {
+    --header-height: 64px; /* Tăng nhẹ chiều cao để thoáng hơn */
+    --sider-width: 260px;
+    
+    /* Palette màu Metal/Dark */
+    --admin-primary: #1e293b; /* Slate Dark - Sang trọng hơn đen thuần */
+    --admin-gradient-start: #293846;
+    --admin-gradient-end: #4B5B6D;
+    
+    --admin-text-main: #e2e8f0; /* Trắng xám sáng */
+    --admin-text-muted: #94a3b8; /* Xám nhạt cho menu chưa active */
+    
+    --admin-accent: #88AABB; /* Màu điểm nhấn Metal */
+    --admin-bg-body: #f1f5f9; /* Xám xanh rất nhạt, dịu mắt */
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Reset & Base */
+body {
+    background-color: var(--admin-bg-body);
+    font-family: 'Inter', 'Segoe UI', sans-serif; /* Ưu tiên font Inter nếu có */
+    color: #334155;
+    -webkit-font-smoothing: antialiased; /* Làm mượt font chữ */
+}
+
+/* ==================================== */
+/* 🔝 HEADER STYLES (GLASS EFFECT) */
+/* ==================================== */
+header.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    
+    /* Gradient tinh tế hơn */
+    background: linear-gradient(135deg, var(--admin-gradient-start) 0%, var(--admin-gradient-end) 100%);
+    color: #FFFFFF;
+    
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Thêm padding 2 bên */
+}
+
+/* Logo Area */
+header.header .inner-logo a {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    width: var(--sider-width);
+    /* Bỏ text-align center, dùng flex để căn chỉnh đẹp hơn */
+}
+
+/* Logo Icon/Text Effect (Optional) */
+header.header .inner-logo a:hover {
+    opacity: 0.9;
+}
+
+/* ==================================== */
+/* 🛠️ CHỈNH SỬA VỊ TRÍ USER (BÊN PHẢI) */
+/* ==================================== */
+
+/* 1. Can thiệp vào cột chứa (col-9) */
+header.header .row .col-9 {
+    display: flex;           /* Biến cột thành flex container */
+    justify-content: flex-end; /* Đẩy toàn bộ nội dung con sang phải */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    height: 100%;            /* Đảm bảo chiều cao full header */
+}
+
+/* 2. Chỉnh sửa class .text-right */
+header.header .text-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Tăng khoảng cách giữa tên và nút Logout cho thoáng */
+    
+    /* Đảm bảo không bị padding của bootstrap làm lệch */
+    margin-right: 0; 
+}
+
+/* 3. Tinh chỉnh lại nút hiển thị tên (cho đẹp hơn) */
+header.header .text-right .btn-primary {
+    border-radius: 30px;      /* Bo tròn hình viên thuốc */
+    padding: 6px 20px;
+    background: rgba(255, 255, 255, 0.15); /* Nền mờ sang trọng */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    
+    /* Đảm bảo chữ không bị xuống dòng */
+    white-space: nowrap; 
+}
+
+/* 4. Tinh chỉnh nút Đăng xuất */
+header.header .text-right .btn-danger {
+    border-radius: 30px;
+    padding: 6px 20px;
+    white-space: nowrap;
+}
+
+/* Nút User & Logout - Thiết kế dạng Pill */
+header.header .btn {
+    border-radius: 50px; /* Bo tròn hoàn toàn */
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header.header .btn-primary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(4px); /* Hiệu ứng mờ nền */
+}
+
+header.header .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+header.header .btn-danger {
+    background: rgba(220, 53, 69, 0.8);
+    border-color: transparent;
+    color: #fff;
+}
+
+header.header .btn-danger:hover {
+    background: #c82333;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* ==================================== */
+/* 🗄️ SIDER (SIDEBAR) - MODERN LOOK */
+/* ==================================== */
+.sider {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sider-width);
+    height: calc(100vh - var(--header-height));
+    background-color: var(--admin-primary);
+    
+    /* Thêm shadow nhẹ bên phải để tách biệt nội dung */
+    box-shadow: 4px 0 24px rgba(0,0,0,0.02); 
+    border-right: 1px solid rgba(255,255,255,0.05);
+    
+    overflow-y: auto;
+    z-index: 900;
+    padding: 20px 10px; /* Padding xung quanh để menu không dính sát lề */
+}
+
+.sider .inner-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sider .inner-menu ul li {
+    margin-bottom: 5px; /* Khoảng cách giữa các mục menu */
+    border: none; /* BỎ border-bottom cũ */
+}
+
+.sider .inner-menu ul li a {
+    display: block;
+    padding: 12px 15px;
+    color: var(--admin-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px; /* Bo góc cho từng mục menu */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Chuẩn bị cho icon (nếu bạn thêm icon fontawesome vào sau) */
+    display: flex;
+    align-items: center;
+}
+
+/* Hiệu ứng Hover Hiện đại */
+.sider .inner-menu ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Nền sáng nhẹ */
+    color: #FFFFFF;
+    transform: translateX(5px); /* Trượt nhẹ sang phải */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Active State (Bạn cần thêm class .active vào thẻ a hoặc li bằng JS/Pug khi ở trang đó) */
+.sider .inner-menu ul li a.active {
+    background: linear-gradient(90deg, var(--admin-active), #6B8B9B);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(136, 170, 187, 0.4); /* Glow effect */
+}
+
+/* ==================================== */
+/* 📄 MAIN CONTENT AREA */
+/* ==================================== */
+.main-content {
+    margin-top: var(--header-height);
+    margin-left: var(--sider-width);
+    padding: 30px; /* Tăng padding để thoáng hơn */
+    min-height: calc(100vh - var(--header-height));
+    
+    /* Hiệu ứng fade-in khi load trang */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive cơ bản cho Mobile (Ẩn Sider) */
+@media (max-width: 768px) {
+    .sider {
+        transform: translateX(-100%);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    header.header .inner-logo a {
+        width: auto;
+    }
+}

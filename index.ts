@@ -12,6 +12,9 @@ import session from 'express-session';
 import flash from 'express-flash';
 import methodOverride from 'method-override';
 import moment from 'moment';
+import AdminRoute from './routes/admin/index.route';
+import { systemConfig } from './config/config';
+import path from 'path';
 dotenv.config();
 // config env
 
@@ -34,10 +37,18 @@ app.set(`views`, `./views`);
 app.set(`view engine`, `pug`);
 app.use(express.urlencoded({ extended: true }));
 
+// tiny mce
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
+
 app.locals.moment = moment;
 
+
+app.locals.prefixAdmin = systemConfig.prefixAdmin;
 // Client Routes
 ClientRoute(app);
+// Admin Routes
+AdminRoute(app);
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
