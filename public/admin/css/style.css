@@ -206,7 +206,7 @@ header.header .btn-danger:hover {
 /* ==================================== */
 /* 📄 MAIN CONTENT AREA */
 /* ==================================== */
-.main-content {
+.main {
     margin-top: var(--header-height);
     margin-left: var(--sider-width);
     padding: 30px; /* Tăng padding để thoáng hơn */
@@ -232,4 +232,137 @@ header.header .btn-danger:hover {
     header.header .inner-logo a {
         width: auto;
     }
+}
+
+/* table css  */
+
+/* ==================================== */
+/* 📦 CARD STYLES (Khung chứa) */
+/* ==================================== */
+.card {
+    border: none; /* Bỏ viền mặc định xấu xí */
+    border-radius: 10px; /* Bo góc mềm mại */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Bóng đổ nhẹ tạo chiều sâu */
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    overflow: hidden; /* Đảm bảo nội dung con không bị lòi ra khỏi bo góc */
+}
+
+.card .card-header {
+    background-color: #ffffff; /* Nền trắng sạch sẽ */
+    border-bottom: 2px solid #f0f2f5; /* Đường kẻ phân cách mờ */
+    padding: 15px 20px;
+    font-weight: 700;
+    color: #293846; /* Màu chữ tiêu đề đậm (theo tông Metal) */
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .card-body {
+    padding: 20px;
+}
+
+/* ==================================== */
+/* 📊 TABLE STYLES (Bảng danh sách) */
+/* ==================================== */
+.table {
+    margin-bottom: 0;
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0; /* Cần thiết cho border-radius */
+}
+
+/* 1. Phần tiêu đề bảng (Thead) */
+.table thead th {
+    background-color: #f8f9fa; /* Nền xám rất nhạt */
+    color: #4B5B6D; /* Màu chữ xám xanh chuyên nghiệp */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 12px 15px;
+    border-bottom: 2px solid #e9ecef;
+    border-top: none;
+    white-space: nowrap; /* Không xuống dòng tiêu đề */
+    vertical-align: middle;
+}
+
+/* 2. Phần nội dung bảng (Tbody) */
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f5f9; /* Hiệu ứng hover sáng nhẹ */
+}
+
+.table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    color: #555;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+/* 3. Cột Checkbox */
+.table input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4B5B6D; /* Màu checkbox khi tích chọn */
+    vertical-align: middle;
+}
+
+/* 4. Cột Hình ảnh (Thumbnail) */
+.table td img {
+    width: 60px; /* Kích thước cố định */
+    height: 40px; /* Tỉ lệ chữ nhật hoặc vuông tùy bạn (40x40 nếu muốn vuông) */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 4px; /* Bo nhẹ góc ảnh */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 5. Cột Trạng thái (Nếu bạn dùng badge) */
+/* Ví dụ: span.badge.badge-success Active */
+.badge-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.badge-status.active {
+    background-color: #e6f7ee;
+    color: #28a745;
+}
+.badge-status.inactive {
+    background-color: #fce8e8;
+    color: #dc3545;
+}
+
+/* 6. Cột Hành động (Nút sửa/xóa) */
+.table .btn-action {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+
+/* ==================================== */
+/* 🔘 BUTTON STYLES (Nút Thêm mới) */
+/* ==================================== */
+.btn-outline-success {
+    /* Tùy chỉnh lại nút bootstrap cho hợp theme hơn */
+    color: #28a745;
+    border-color: #28a745;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Shadow xanh khi hover */
+    transform: translateY(-1px);
 }
