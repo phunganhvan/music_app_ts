@@ -1,15 +1,16 @@
 extends ../../layout/default.pug 
 
 block main 
+    h1 Quản lý chủ đề
     .card.mb-3 
         .card-header Danh sách
         .card-body
             .row 
                 .col-8 
-                    //- +formChangeMulti(`${PATH_ADMIN}/blog-category/change-multi?_method=PATCH`, isDelete, "blog_Category", "danh mục bài viết")
+                    //- +formChangeMulti(`${prefixAdmin}/blog-category/change-multi?_method=PATCH`, isDelete, "blog_Category", "danh mục bài viết")
                 .col-4 
                     a(
-                        href=`${PATH_ADMIN}/blog-category/create`
+                        href=`${prefixAdmin}/topic/create`
                         class="btn btn-outline-success"
                     ) + Thêm mới
         .card.mb-3
@@ -55,14 +56,15 @@ block main
                                         ) Dừng hoạt động
                                 td  
                                     a(
-                                        href=`${PATH_ADMIN}/topic/detail/${topic._id}`
-                                    )
+                                        href=`${prefixAdmin}/topic/detail/${topic._id}`
+                                        class="btn btn-sm btn-info me-2"
+                                    ) Chi tiết
                                     a(
-                                        href=`${PATH_ADMIN}/topic/edit/${topic._id}`
+                                        href=`${prefixAdmin}/topic/edit/${topic._id}`
                                         class="btn btn-sm btn-primary me-2"
                                     ) Sửa
                                     a(
-                                        href=`${PATH_ADMIN}/topic/delete/${topic._id}?_method=DELETE`
+                                        href=`${prefixAdmin}/topic/delete/${topic._id}?_method=DELETE`
                                         class="btn btn-sm btn-danger"
                                         onclick="return confirm('Bạn có chắc chắn muốn xóa chủ đề này không?');"
                                     ) Xóa

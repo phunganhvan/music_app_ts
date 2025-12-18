@@ -1,0 +1,78 @@
+extends ../../layout/default.pug 
+block main
+    h1 Quản lý bài hát
+    .card.mb-3 
+        .card-header Danh sách
+        .card-body
+            .row 
+                .col-8 
+                    //- +formChangeMulti(`${prefixAdmin}/blog-category/change-multi?_method=PATCH`, isDelete, "blog_Category", "danh mục bài viết")
+                .col-4 
+                    a(
+                        href=`${prefixAdmin}/song/create`
+                        class="btn btn-outline-success"
+                    ) + Thêm mới
+    .card.mb-3
+        .card-header Sắp xếp 
+        .card-body
+            .row 
+                .col-4
+            table(
+                class="table table-hover table-sm"
+            )
+                thead
+                    tr
+                        th STT
+                        th Hình ảnh
+                        th Tiêu đề
+                        th Ca sĩ
+                        th Chủ đề
+                        th Trạng thái
+                        th Hành động
+                tbody
+                    each song, index in songs
+                        tr
+                            td #{index + 1}
+                            td 
+                                if song.avatar
+                                    img(
+                                        src=song.avatar
+                                        alt=`${song.title}`
+                                        width="50"
+                                        height="50"
+                                    )
+                                else
+                                    | No Image
+                            td #{song.title}
+                            td <b>#{song.singerInfo[0].fullName}</b>
+                            td 
+                                if song.topicInfo
+                                    | <b>#{song["topicInfo"][0].title}</b>
+                                else
+                                    | Chưa có chủ đề
+                            td 
+                                if song.status == 'active'
+                                    a(
+                                        href="javascript:;"
+                                        class="badge bg-success"
+                                    ) Hoạt động
+                                else
+                                    a(
+                                        href="javascript:;"
+                                        class="badge bg-secondary"
+                                    ) Dừng hoạt động
+                            td  
+                                a(
+                                    href=`${prefixAdmin}/song/detail/${song._id}`
+                                    class="btn btn-sm btn-info me-2"
+                                ) Chi tiết
+                                a(
+                                    href=`${prefixAdmin}/song/edit/${song._id}`
+                                    class="btn btn-sm btn-primary me-2"
+                                ) Sửa
+                                a(
+                                    href=`${prefixAdmin}/song/delete/${song._id}?_method=DELETE`
+                                    class="btn btn-sm btn-danger me-2"
+                                    button-delete
+                                    data-id = song.id
+                                ) Xóa

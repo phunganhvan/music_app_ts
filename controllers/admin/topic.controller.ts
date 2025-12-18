@@ -6,7 +6,7 @@ export const index = async (req: Request, res: Response): Promise<void> => {
         deleted: false,
     });
     res.render('admin/pages/topic/index', {
-        title: 'Topic Management',
+        pageTitle: 'Quản lý chủ đề',
         topics: topics,
     });
 
