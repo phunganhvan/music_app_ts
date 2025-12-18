@@ -29,3 +29,20 @@ export const index = async (req: Request, res: Response): Promise<void> => {
         songs: songs
     })
 };
+
+export const create = async (req: Request, res: Response): Promise<void> => {   
+    const topic = await Topic.find({
+        deleted: false,
+        status: "active"
+    }).select('title');
+    const singer = await Singer.find({
+        deleted: false,
+        status: "active"
+    }).select('fullName');
+    console.log(singer, topic);
+    res.render('admin/pages/song/create', {
+        pageTitle: "Thêm mới bài hát",
+        topics: topic,
+        singers: singer
+    })
+}

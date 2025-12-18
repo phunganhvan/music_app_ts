@@ -366,3 +366,319 @@ header.header .btn-danger:hover {
     box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Shadow xanh khi hover */
     transform: translateY(-1px);
 }
+
+
+/* css cho preview ảnh  */
+/* ==================================== */
+/* 🖼️ UPLOAD IMAGE PREVIEW STYLES */
+/* ==================================== */
+
+/* Container chính */
+[upload-image] {
+    position: relative;
+    padding: 15px;
+    border: 2px dashed #cbd5e1; /* Viền đứt tạo cảm giác khu vực upload */
+    border-radius: 12px;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+[upload-image]:focus-within {
+    border-color: var(--admin-accent); /* Đổi màu viền khi tương tác */
+    background-color: #fff;
+}
+
+/* Tinh chỉnh Input File */
+.form-control-file {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Ảnh Preview */
+[upload-image-preview] {
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Giữ tỉ lệ ảnh không bị méo */
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+/* Ẩn ảnh khi chưa có src */
+[upload-image-preview][src=""] {
+    display: none;
+}
+
+/* Container chứa cả ảnh và nút xóa */
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block; /* Để khung bao quanh đúng kích thước ảnh */
+    margin-top: 15px;
+}
+
+/* Nút xóa ảnh (Dấu X) */
+[close-preview] {
+    position: absolute;
+    top: -10px;      /* Đẩy lên mép trên ảnh */
+    right: -10px;    /* Đẩy sang mép phải ảnh */
+    width: 28px;
+    height: 28px;
+    background-color: #ff4d4f; /* Màu đỏ nổi bật */
+    color: white;
+    border-radius: 50%; /* Hình tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid white; /* Viền trắng để tách biệt với ảnh */
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+[close-preview]:hover {
+    background-color: #d9363e;
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+/* Thêm hiệu ứng cho ảnh preview */
+[upload-image-preview] {
+    border: 1px solid #d9d9d9;
+    padding: 4px;
+    background: #fff;
+    border-radius: 4px;
+    display: block;
+    max-width: 150px;
+}
+
+/* Ẩn nút Close nếu không có ảnh */
+[upload-image-preview][src=""] + [close-preview] {
+    display: none;
+}
+
+/* Label tiêu đề */
+[upload-image] label {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+/* end css */
+
+
+/* css another page  */
+/* ==================================== */
+/* 🛠️ GLOBAL VARIABLES & RESET */
+/* ==================================== */
+:root {
+    --primary-color: #3b82f6;        /* Blue accent */
+    --primary-hover: #2563eb;
+    --admin-dark: #1e293b;           /* Slate Dark */
+    --admin-bg: #f1f5f9;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--admin-bg);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+/* ==================================== */
+/* 📄 FORM CONTAINER (CARD LOOK) */
+/* ==================================== */
+.main-content {
+    margin-left: 260px; /* Khớp với chiều rộng Sider của bạn */
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+h1.mb-4 {
+    font-weight: 800;
+    color: var(--admin-dark);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+#form-create-song {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    max-width: 900px; /* Giới hạn độ rộng để dễ đọc */
+}
+
+/* ==================================== */
+/* ✍️ FORM ELEMENTS (Inputs, Select, Textarea) */
+/* ==================================== */
+.mb-3 { margin-bottom: 1.5rem !important; }
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--admin-dark);
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: #fff;
+}
+
+/* Tinh chỉnh Select mũi tên */
+select.form-control {
+    cursor: pointer;
+}
+
+/* ==================================== */
+/* 🖼️ IMAGE UPLOAD PREVIEW (MODERNIZED) */
+/* ==================================== */
+[upload-image] {
+    background: #f8fafc;
+    padding: 20px;
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--border-radius);
+}
+
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+[upload-image-preview] {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #fff;
+    box-shadow: var(--shadow-md);
+    display: block;
+}
+
+/* Nút xóa ảnh (x) */
+[close-preview] {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 26px;
+    height: 26px;
+    background: #ef4444;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid #fff;
+    transition: 0.2s;
+}
+
+[close-preview]:hover {
+    transform: scale(1.15);
+    background: #dc2626;
+}
+
+/* Ẩn preview khi trống */
+[upload-image-preview][src=""] { display: none; }
+[upload-image-preview][src=""] + [close-preview] { display: none; }
+
+/* ==================================== */
+/* 🔘 RADIO BUTTONS & STATUS */
+/* ==================================== */
+.form-check-inline {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 8px 15px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-check-inline:hover {
+    background: #e2e8f0;
+}
+
+.form-check-input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+/* ==================================== */
+/* 🚀 SUBMIT BUTTON */
+/* ==================================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #2563eb);
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+/* ==================================== */
+/* ✨ ANIMATIONS */
+/* ==================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    #form-create-song { padding: 20px; }
+}

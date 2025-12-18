@@ -1,5 +1,6 @@
+console.log('tinymce config loaded');
 tinymce.init({
-  selector: 'textarea.textarea-mce',
+  selector: '.textarea-mce',
   license_key: 'gpl',
   plugins: 'advlist link image lists',
   file_picker_callback: (cb, value, meta) => {
