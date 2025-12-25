@@ -66,6 +66,16 @@ block main
                     )
                     span(close-preview) x
             div(class="mb-3")
+                label(for="audio") File âm thanh 
+                input(
+                    type="file"
+                    class="form-control-file"
+                    id="audio"
+                    name="audio"
+                    accept="audio/*"
+                    required 
+                )
+            div(class="mb-3")
                 label(for="position") Vị trí
                 input(
                     type="number"

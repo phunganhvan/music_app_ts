@@ -53,12 +53,21 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
     const lengthData = await Song.countDocuments({
         deleted: false,
     });
+    let avatar= "";
+    let audio= "";
+    if(req.body.audio){
+        audio = req.body.audio[0];
+    }
+    if(req.body.avatar){
+        avatar = req.body.avatar[0];
+    }
     const dataSongObject ={
         title: req.body.title,
         slug: req.body.slug,
         singerId: req.body.singerId,
         topicId: req.body.topicId,
-        avatar: req.body.avatar,
+        avatar: avatar,
+        audio: audio,
         description: req.body.description,
         position: req.body.position || lengthData + 1,
         status: req.body.status,

@@ -12,5 +12,5 @@ router.get('/', controller.index);
 
 router.get('/create', controller.create);
 
-router.post('/create',  upload.single("avatar"), uploadToCloud.uploadSingle, validate.createPost, controller.createPost);
+router.post('/create',  upload.fields([{ name: "avatar", maxCount: 1 }, { name: "audio", maxCount: 1 }]), uploadToCloud.uploadSingle, validate.createPost, controller.createPost);
 export const SongRoutes = router;
