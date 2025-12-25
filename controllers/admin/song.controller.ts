@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import Song from '../../models/song.model';
 import Singer from '../../models/singer.model';
 import Topic from '../../models/topic.model';
+import { systemConfig } from '../../config/config';
+
 
 export const index = async (req: Request, res: Response): Promise<void> => {   
     const songs = await Song.find({
@@ -39,10 +41,30 @@ export const create = async (req: Request, res: Response): Promise<void> => {
         deleted: false,
         status: "active"
     }).select('fullName');
-    console.log(singer, topic);
     res.render('admin/pages/song/create', {
         pageTitle: "Thêm mới bài hát",
         topics: topic,
         singers: singer
     })
+}
+
+export const createPost = async (req: Request, res: Response): Promise<void> => {
+    // console.log(req.body);
+    const lengthData = await Song.countDocuments({
+        deleted: false,
+    });
+    const dataSongObject ={
+        title: req.body.title,
+        slug: req.body.slug,
+        singerId: req.body.singerId,
+        topicId: req.body.topicId,
+        avatar: req.body.avatar,
+        description: req.body.description,
+        position: req.body.position || lengthData + 1,
+        status: req.body.status,
+    }
+    const song = new Song(dataSongObject);
+    await song.save();
+    req.flash("success", "Thêm mới bài hát thành công");
+    res.redirect(`${systemConfig.prefixAdmin}/song`);
 }

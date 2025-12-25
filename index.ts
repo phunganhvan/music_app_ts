@@ -1,7 +1,6 @@
 console.log("Welcome to the Music App!");
 
 
-// localhost:3000/topics chủ đề bài hát
 
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
@@ -15,6 +14,8 @@ import moment from 'moment';
 import AdminRoute from './routes/admin/index.route';
 import { systemConfig } from './config/config';
 import path from 'path';
+
+import bodyParser from 'body-parser';
 dotenv.config();
 // config env
 
@@ -30,6 +31,9 @@ app.use(session({cookie: {maxAge: 60000}}));
 app.use(flash());
 app.use(express.static('public'));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 //override method PATCH
 app.use(methodOverride('_method'));
 
