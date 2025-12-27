@@ -26,11 +26,13 @@ if (song) {
         const song = JSON.parse(songData);
         const ap = new APlayer({
             container: document.getElementById('aplayer'),
+            lrcType: 1,
             audio: [{
                 name: song.title,
                 artist: song.singerName,
                 url: song.audio,
-                cover: song.avatar
+                cover: song.avatar,
+                lrc: song.lyrics || "",
             }],
             autoplay: true,
         });

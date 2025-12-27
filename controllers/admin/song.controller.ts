@@ -68,6 +68,7 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
         topicId: req.body.topicId,
         avatar: avatar,
         audio: audio,
+        lyrics: req.body.lyrics,
         description: req.body.description,
         position: req.body.position || lengthData + 1,
         status: req.body.status,

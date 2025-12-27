@@ -65,7 +65,7 @@ block main
                         alt="Ảnh của tôi"
                     )
                     span(close-preview) x
-            div(class="mb-3")
+            div(class="mb-3" upload-audio)
                 label(for="audio") File âm thanh 
                 input(
                     type="file"
@@ -74,6 +74,24 @@ block main
                     name="audio"
                     accept="audio/*"
                     required 
+                    upload-audio-input
+                )
+                audio(
+                    controls
+                    upload-audio-play
+                )
+                    source(
+                        src=""
+                    )
+                    span(close-audio-preview) x
+            div(class="mb-3")
+                label(for="lyrics") Lời bài hát
+                textarea(
+                    type="text"
+                    class="form-control textarea-mce"
+                    id="lyrics"
+                    name="lyrics"
+                    rows="5"
                 )
             div(class="mb-3")
                 label(for="position") Vị trí

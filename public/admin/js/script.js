@@ -28,6 +28,32 @@ if (upload) {
 }
 
 
+//preview audio
+const audioUpload = document.querySelector("[upload-audio]");
+if( audioUpload){
+    const uploadAudioInput = document.querySelector("[upload-audio-input]");
+    const uploadAudioPreview = document.querySelector("[upload-audio-play]");
+    uploadAudioInput.addEventListener("change", (e) => {
+        if(e.target.files.length > 0){
+            const audio = URL.createObjectURL(e.target.files[0]);
+            uploadAudioPreview.src = audio;
+            audioUpload.classList.add("active");
+        }   
+    });
+    const closeAudioPreview = document.querySelector("[close-audio-preview]")
+    closeAudioPreview.addEventListener("click", () => {
+        let value = uploadAudioInput.value  
+        if (value) {
+            uploadAudioInput.value = "";
+            uploadAudioPreview.src = "";
+            audioUpload.classList.remove("active");
+        }
+        else {
+            alert("Vui lòng chọn 1 audio");
+            return;
+        }
+    })
+}
 // alert
 // logic cho alert 
 
