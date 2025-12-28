@@ -1,0 +1,806 @@
+/* ==================================== */
+/* 🛠️ ADMIN THEME VARIABLES (MODERNIZED) */
+/* ==================================== */
+:root {
+    --header-height: 64px; /* Tăng nhẹ chiều cao để thoáng hơn */
+    --sider-width: 260px;
+    
+    /* Palette màu Metal/Dark */
+    --admin-primary: #1e293b; /* Slate Dark - Sang trọng hơn đen thuần */
+    --admin-gradient-start: #293846;
+    --admin-gradient-end: #4B5B6D;
+    
+    --admin-text-main: #e2e8f0; /* Trắng xám sáng */
+    --admin-text-muted: #94a3b8; /* Xám nhạt cho menu chưa active */
+    
+    --admin-accent: #88AABB; /* Màu điểm nhấn Metal */
+    --admin-bg-body: #f1f5f9; /* Xám xanh rất nhạt, dịu mắt */
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Reset & Base */
+body {
+    background-color: var(--admin-bg-body);
+    font-family: 'Inter', 'Segoe UI', sans-serif; /* Ưu tiên font Inter nếu có */
+    color: #334155;
+    -webkit-font-smoothing: antialiased; /* Làm mượt font chữ */
+}
+
+/* ==================================== */
+/* 🔝 HEADER STYLES (GLASS EFFECT) */
+/* ==================================== */
+header.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    
+    /* Gradient tinh tế hơn */
+    background: linear-gradient(135deg, var(--admin-gradient-start) 0%, var(--admin-gradient-end) 100%);
+    color: #FFFFFF;
+    
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Thêm padding 2 bên */
+}
+
+/* Logo Area */
+header.header .inner-logo a {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    width: var(--sider-width);
+    /* Bỏ text-align center, dùng flex để căn chỉnh đẹp hơn */
+}
+
+/* Logo Icon/Text Effect (Optional) */
+header.header .inner-logo a:hover {
+    opacity: 0.9;
+}
+
+/* ==================================== */
+/* 🛠️ CHỈNH SỬA VỊ TRÍ USER (BÊN PHẢI) */
+/* ==================================== */
+
+/* 1. Can thiệp vào cột chứa (col-9) */
+header.header .row .col-9 {
+    display: flex;           /* Biến cột thành flex container */
+    justify-content: flex-end; /* Đẩy toàn bộ nội dung con sang phải */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    height: 100%;            /* Đảm bảo chiều cao full header */
+}
+
+/* 2. Chỉnh sửa class .text-right */
+header.header .text-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Tăng khoảng cách giữa tên và nút Logout cho thoáng */
+    
+    /* Đảm bảo không bị padding của bootstrap làm lệch */
+    margin-right: 0; 
+}
+
+/* 3. Tinh chỉnh lại nút hiển thị tên (cho đẹp hơn) */
+header.header .text-right .btn-primary {
+    border-radius: 30px;      /* Bo tròn hình viên thuốc */
+    padding: 6px 20px;
+    background: rgba(255, 255, 255, 0.15); /* Nền mờ sang trọng */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    
+    /* Đảm bảo chữ không bị xuống dòng */
+    white-space: nowrap; 
+}
+
+/* 4. Tinh chỉnh nút Đăng xuất */
+header.header .text-right .btn-danger {
+    border-radius: 30px;
+    padding: 6px 20px;
+    white-space: nowrap;
+}
+
+/* Nút User & Logout - Thiết kế dạng Pill */
+header.header .btn {
+    border-radius: 50px; /* Bo tròn hoàn toàn */
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header.header .btn-primary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(4px); /* Hiệu ứng mờ nền */
+}
+
+header.header .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+header.header .btn-danger {
+    background: rgba(220, 53, 69, 0.8);
+    border-color: transparent;
+    color: #fff;
+}
+
+header.header .btn-danger:hover {
+    background: #c82333;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* ==================================== */
+/* 🗄️ SIDER (SIDEBAR) - MODERN LOOK */
+/* ==================================== */
+.sider {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sider-width);
+    height: calc(100vh - var(--header-height));
+    background-color: var(--admin-primary);
+    
+    /* Thêm shadow nhẹ bên phải để tách biệt nội dung */
+    box-shadow: 4px 0 24px rgba(0,0,0,0.02); 
+    border-right: 1px solid rgba(255,255,255,0.05);
+    
+    overflow-y: auto;
+    z-index: 900;
+    padding: 20px 10px; /* Padding xung quanh để menu không dính sát lề */
+}
+
+.sider .inner-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sider .inner-menu ul li {
+    margin-bottom: 5px; /* Khoảng cách giữa các mục menu */
+    border: none; /* BỎ border-bottom cũ */
+}
+
+.sider .inner-menu ul li a {
+    display: block;
+    padding: 12px 15px;
+    color: var(--admin-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px; /* Bo góc cho từng mục menu */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Chuẩn bị cho icon (nếu bạn thêm icon fontawesome vào sau) */
+    display: flex;
+    align-items: center;
+}
+
+/* Hiệu ứng Hover Hiện đại */
+.sider .inner-menu ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Nền sáng nhẹ */
+    color: #FFFFFF;
+    transform: translateX(5px); /* Trượt nhẹ sang phải */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Active State (Bạn cần thêm class .active vào thẻ a hoặc li bằng JS/Pug khi ở trang đó) */
+.sider .inner-menu ul li a.active {
+    background: linear-gradient(90deg, var(--admin-active), #6B8B9B);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(136, 170, 187, 0.4); /* Glow effect */
+}
+
+/* ==================================== */
+/* 📄 MAIN CONTENT AREA */
+/* ==================================== */
+.main {
+    margin-top: var(--header-height);
+    margin-left: var(--sider-width);
+    padding: 30px; /* Tăng padding để thoáng hơn */
+    min-height: calc(100vh - var(--header-height));
+    
+    /* Hiệu ứng fade-in khi load trang */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive cơ bản cho Mobile (Ẩn Sider) */
+@media (max-width: 768px) {
+    .sider {
+        transform: translateX(-100%);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    header.header .inner-logo a {
+        width: auto;
+    }
+}
+
+/* table css  */
+
+/* ==================================== */
+/* 📦 CARD STYLES (Khung chứa) */
+/* ==================================== */
+.card {
+    border: none; /* Bỏ viền mặc định xấu xí */
+    border-radius: 10px; /* Bo góc mềm mại */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Bóng đổ nhẹ tạo chiều sâu */
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    overflow: hidden; /* Đảm bảo nội dung con không bị lòi ra khỏi bo góc */
+}
+
+.card .card-header {
+    background-color: #ffffff; /* Nền trắng sạch sẽ */
+    border-bottom: 2px solid #f0f2f5; /* Đường kẻ phân cách mờ */
+    padding: 15px 20px;
+    font-weight: 700;
+    color: #293846; /* Màu chữ tiêu đề đậm (theo tông Metal) */
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .card-body {
+    padding: 20px;
+}
+
+/* ==================================== */
+/* 📊 TABLE STYLES (Bảng danh sách) */
+/* ==================================== */
+.table {
+    margin-bottom: 0;
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0; /* Cần thiết cho border-radius */
+}
+
+/* 1. Phần tiêu đề bảng (Thead) */
+.table thead th {
+    background-color: #f8f9fa; /* Nền xám rất nhạt */
+    color: #4B5B6D; /* Màu chữ xám xanh chuyên nghiệp */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 12px 15px;
+    border-bottom: 2px solid #e9ecef;
+    border-top: none;
+    white-space: nowrap; /* Không xuống dòng tiêu đề */
+    vertical-align: middle;
+}
+
+/* 2. Phần nội dung bảng (Tbody) */
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f5f9; /* Hiệu ứng hover sáng nhẹ */
+}
+
+.table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    color: #555;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+/* 3. Cột Checkbox */
+.table input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4B5B6D; /* Màu checkbox khi tích chọn */
+    vertical-align: middle;
+}
+
+/* 4. Cột Hình ảnh (Thumbnail) */
+.table td img {
+    width: 60px; /* Kích thước cố định */
+    height: 40px; /* Tỉ lệ chữ nhật hoặc vuông tùy bạn (40x40 nếu muốn vuông) */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 4px; /* Bo nhẹ góc ảnh */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 5. Cột Trạng thái (Nếu bạn dùng badge) */
+/* Ví dụ: span.badge.badge-success Active */
+.badge-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.badge-status.active {
+    background-color: #e6f7ee;
+    color: #28a745;
+}
+.badge-status.inactive {
+    background-color: #fce8e8;
+    color: #dc3545;
+}
+
+/* 6. Cột Hành động (Nút sửa/xóa) */
+.table .btn-action {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+
+/* ==================================== */
+/* 🔘 BUTTON STYLES (Nút Thêm mới) */
+/* ==================================== */
+.btn-outline-success {
+    /* Tùy chỉnh lại nút bootstrap cho hợp theme hơn */
+    color: #28a745;
+    border-color: #28a745;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Shadow xanh khi hover */
+    transform: translateY(-1px);
+}
+
+
+/* css cho preview ảnh  */
+/* ==================================== */
+/* 🖼️ UPLOAD IMAGE PREVIEW STYLES */
+/* ==================================== */
+
+/* Container chính */
+[upload-image] {
+    position: relative;
+    padding: 15px;
+    border: 2px dashed #cbd5e1; /* Viền đứt tạo cảm giác khu vực upload */
+    border-radius: 12px;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+[upload-image]:focus-within {
+    border-color: var(--admin-accent); /* Đổi màu viền khi tương tác */
+    background-color: #fff;
+}
+
+/* Tinh chỉnh Input File */
+.form-control-file {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Ảnh Preview */
+[upload-image-preview] {
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Giữ tỉ lệ ảnh không bị méo */
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+/* Ẩn ảnh khi chưa có src */
+[upload-image-preview][src=""] {
+    display: none;
+}
+
+/* Container chứa cả ảnh và nút xóa */
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block; /* Để khung bao quanh đúng kích thước ảnh */
+    margin-top: 15px;
+}
+
+/* Nút xóa ảnh (Dấu X) */
+[close-preview] {
+    position: absolute;
+    top: -10px;      /* Đẩy lên mép trên ảnh */
+    right: -10px;    /* Đẩy sang mép phải ảnh */
+    width: 28px;
+    height: 28px;
+    background-color: #ff4d4f; /* Màu đỏ nổi bật */
+    color: white;
+    border-radius: 50%; /* Hình tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid white; /* Viền trắng để tách biệt với ảnh */
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+[close-preview]:hover {
+    background-color: #d9363e;
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+/* Thêm hiệu ứng cho ảnh preview */
+[upload-image-preview] {
+    border: 1px solid #d9d9d9;
+    padding: 4px;
+    background: #fff;
+    border-radius: 4px;
+    display: block;
+    max-width: 150px;
+}
+
+/* Ẩn nút Close nếu không có ảnh */
+[upload-image-preview][src=""] + [close-preview] {
+    display: none;
+}
+
+/* Label tiêu đề */
+[upload-image] label {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+/* end css */
+
+
+/* css another page  */
+/* ==================================== */
+/* 🛠️ GLOBAL VARIABLES & RESET */
+/* ==================================== */
+:root {
+    --primary-color: #3b82f6;        /* Blue accent */
+    --primary-hover: #2563eb;
+    --admin-dark: #1e293b;           /* Slate Dark */
+    --admin-bg: #f1f5f9;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--admin-bg);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+/* ==================================== */
+/* 📄 FORM CONTAINER (CARD LOOK) */
+/* ==================================== */
+.main-content {
+    margin-left: 260px; /* Khớp với chiều rộng Sider của bạn */
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+h1.mb-4 {
+    font-weight: 800;
+    color: var(--admin-dark);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+#form-create-song {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    max-width: 900px; /* Giới hạn độ rộng để dễ đọc */
+}
+
+/* ==================================== */
+/* ✍️ FORM ELEMENTS (Inputs, Select, Textarea) */
+/* ==================================== */
+.mb-3 { margin-bottom: 1.5rem !important; }
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--admin-dark);
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: #fff;
+}
+
+/* Tinh chỉnh Select mũi tên */
+select.form-control {
+    cursor: pointer;
+}
+
+/* ==================================== */
+/* 🖼️ IMAGE UPLOAD PREVIEW (MODERNIZED) */
+/* ==================================== */
+[upload-image] {
+    background: #f8fafc;
+    padding: 20px;
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--border-radius);
+}
+
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+[upload-image-preview] {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #fff;
+    box-shadow: var(--shadow-md);
+    display: block;
+}
+
+/* Nút xóa ảnh (x) */
+[close-preview] {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 26px;
+    height: 26px;
+    background: #ef4444;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid #fff;
+    transition: 0.2s;
+}
+
+[close-preview]:hover {
+    transform: scale(1.15);
+    background: #dc2626;
+}
+
+/* Ẩn preview khi trống */
+[upload-image-preview][src=""] { display: none; }
+[upload-image-preview][src=""] + [close-preview] { display: none; }
+
+/* ==================================== */
+/* 🔘 RADIO BUTTONS & STATUS */
+/* ==================================== */
+.form-check-inline {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 8px 15px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-check-inline:hover {
+    background: #e2e8f0;
+}
+
+.form-check-input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+
+
+/* ==================================== */
+/* ✨ ANIMATIONS */
+/* ==================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    #form-create-song { padding: 20px; }
+}
+
+/* ==================================== */
+/* 🔔 ALERT MESSAGES STYLES */
+/* ==================================== */
+
+/* Container chung cho các thông báo */
+[show-alert] {
+    position: fixed;
+    top: 20px; /* Vị trí phía trên */
+    right: 280px; /* Vị trí bên phải */
+    z-index: 1050; /* Đảm bảo nằm trên các thành phần khác */
+    
+    /* Thiết kế chung */
+    padding: 15px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* opacity: 0; Mặc định ẩn, sẽ hiển thị bằng JS */
+    /* visibility: hidden; */
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateX(100%); /* Bắt đầu từ ngoài màn hình */
+    min-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Khi thông báo được hiển thị (có thể thêm class .show bằng JS) */
+/* [show-alert].show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); Trượt vào từ bên phải */
+/* } */
+
+/* --- SUCCESS ALERT --- */
+.alert-success {
+    /* Màu xanh lá cây thân thiện, phối hợp với màu chủ đạo */
+    background: linear-gradient(135deg, #A8E6CF 0%, #00BFA5 100%); 
+    color: #005A4E; /* Màu chữ xanh đậm */
+    border: 1px solid #00BFA5;
+}
+
+/* --- ERROR ALERT --- */
+.alert-danger {
+    /* Màu đỏ đậm, chuyên nghiệp, phối hợp với màu chủ đạo */
+    background: linear-gradient(135deg, #FFC1CC 0%, #D32F2F 100%); 
+    color: #4B0000; /* Màu chữ đỏ đậm */
+    border: 1px solid #D32F2F;
+}
+
+
+/* CLOSE BUTTON (x) */
+[close-alert] {
+    margin-left: 15px;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+[close-alert]:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Đảm bảo màu chữ 'x' rõ ràng trên nền */
+.alert-success [close-alert] {
+    color: #005A4E; 
+}
+.alert-danger [close-alert] {
+    color: #4B0000;
+}
+[show-alert].alert-hidden {
+  animation-name: alert-hidden;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.alert-hidden {
+  display: none;
+}
+/* end alert css  */
+
+/* css audio preview  */
+/* Container chính */
+[upload-audio] {
+    position: relative;
+    padding: 15px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi hover vào vùng upload */
+[upload-audio]:hover {
+    border-color: #007bff;
+    background-color: #f0f7ff;
+}
+
+/* Label tiêu đề */
+[upload-audio] label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Input file */
+.form-control-file {
+    margin-bottom: 15px;
+    display: block;
+    width: 100%;
+}
+
+/* Trình phát Audio */
+[upload-audio-play] {
+    display: none; /* Ẩn mặc định, chỉ hiện khi có file */
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+}
+
+/* Nút xóa (X) để hủy file đã chọn */
+[close-audio-preview] {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d4d;
+    display: none; /* Ẩn khi chưa có file */
+}
+
+[close-audio-preview]:hover {
+    color: #c00;
+}
+
+/* Class hỗ trợ để hiển thị khi có dữ liệu (dùng JS để toggle) */
+[upload-audio].active [upload-audio-play],
+[upload-audio].active [close-audio-preview] {
+    display: block;
+}

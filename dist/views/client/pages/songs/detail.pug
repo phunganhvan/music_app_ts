@@ -1,0 +1,54 @@
+extends ../../layout/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/toast.pug
+block main
+    .singer-detail
+        .container
+            +toast()
+            .row
+                .col-12
+                    .inner-title #{song.title}
+
+                    .inner-actions
+                        div(class="inner-action inner-time")
+                            i(class="fa-regular fa-clock")
+                            |  20/10/2023
+
+                        div(class="inner-action inner-singer")
+                            i(class="fa-solid fa-microphone-lines")
+                            |  #{singerInfo[0].fullName}
+
+                        div(class="inner-action inner-topic")
+                            i(class="fa-solid fa-music")
+                            |  #{topic.title}
+
+                        div(class="inner-action inner-like" button-like=song.id)
+                            i(class="fa-regular fa-thumbs-up")
+                            span #{song.like} yêu thích
+                        
+                        div(class= "inner-action inner-listen")
+                            i.fa-solid.fa-headphones
+                            span #{song.listen} lượt nghe
+
+                        div(class=`inner-action inner-heart${song.isFavorite ? ' active' : ''}` button-favorite=song.id)
+                            i(class="fa-regular fa-heart")
+                            span Bài hát yêu thích
+
+                    .inner-play
+                        .inner-avatar
+                            img(src=song.avatar alt=song.title)
+
+                        .inner-audio
+                            div(id="aplayer" data-song= song)
+                            //- audio(controls)
+                            //-     source(src="https://backend.daca.vn/assets/audios/cat-doi-noi-sau.mp3")
+
+                    .inner-desc
+                        .inner-label Mô tả
+                        .inner-text
+                            | #{song.description}
+
+                    .inner-desc
+                        .inner-label Lời bài hát
+                        .inner-text
+                            | #{song.lyrics}

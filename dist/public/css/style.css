@@ -1,0 +1,1118 @@
+/* footer chân trang  */
+html{
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main{
+    flex: 1;
+}
+
+
+/* header  */
+.header {
+    background: linear-gradient(90deg, #3b4651 0%, #293846 100%);
+    /* linear-gradient(90deg, #1A2937 0%, #08121B 100%); - xanh đen */
+    border-bottom: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 15px 40px;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s ease;
+}
+
+/* LOGO */
+.header .inner-logo img {
+    max-height: 55px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.header .inner-logo img:hover {
+    transform: scale(1.05);
+}
+
+/* end header  */
+/* MENU */
+.header .inner-menu ul {
+    position: relative;
+    right: -56px;
+    list-style: none; /* Bỏ dấu chấm */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Hiển thị các mục menu theo hàng ngang */
+    justify-content: flex-end; /* Căn menu sang phải của cột */
+    align-items: center;
+    height: 100%; /* Đảm bảo menu căn giữa chiều cao với logo */
+}
+
+.header .inner-menu ul li {
+    margin-left: 25px; /* Khoảng cách giữa các mục menu */
+    position: relative;
+}
+
+.header .inner-menu ul li a {
+    color: #FFFFFF; /* Màu chữ trắng cho dễ nhìn trên nền gradient xanh đen */
+    text-decoration: none; /* Bỏ gạch chân */
+    font-size: 1.1rem; /* Kích thước chữ */
+    font-weight: 500; /* Độ đậm vừa phải */
+    padding: 5px 0; /* Khoảng padding trên dưới */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.header .inner-menu ul li a:hover {
+    color: #88AABB; /* Màu bạc sáng khi hover, lấy từ gradient chữ */
+    /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); Thêm hiệu ứng phát sáng nhẹ */
+    transform: translateY(-2px); /* Nhấc nhẹ lên khi hover */
+}
+
+/* Thêm hiệu ứng gạch chân hiện đại */
+.header .inner-menu ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px; /* Độ dày gạch chân */
+    background: #88AABB; /* Màu bạc sáng */
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px; /* Vị trí dưới chữ */
+    left: 0;
+    border-radius: 2px;
+}
+
+/* user info  */
+/* 1. Nút Đăng ký (Đăng ký) - Dùng class .regis */
+.header .inner-menu ul li a.regis {
+    /* Sử dụng màu bạc sáng, tương tự như hiệu ứng hover của menu */
+    /* position: relative; */
+    background: #88AABB; 
+    color: #293846; /* Màu chữ xanh đen */
+    padding: 8px 15px; 
+    border-radius: 6px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    border: none;
+    line-height: 1.5; /* Căn chỉnh lại chiều cao */
+    /* right: 10px; */
+}
+
+.header .inner-menu ul li a.regis:hover {
+    background: #FFFFFF; /* Nền trắng khi hover */
+    color: #4B5B6D;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
+.header .inner-menu ul li a.regis::after {
+    display: none;
+}
+
+/* 2. Nút Tên người dùng (user.fullName) - Dùng class .btn.btn-primary */
+.header .inner-menu ul li a.btn-primary {
+    /* Sử dụng Metal Gradient/Xanh đen đậm để nổi bật khi đã đăng nhập */
+    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.header .inner-menu ul li a.btn-primary:hover {
+    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+}
+
+/* Ẩn gạch chân dưới cho nút (từ CSS menu cũ) */
+.header .inner-menu ul li a.btn-primary::after {
+    display: none;
+}
+
+/* 3. Link Đăng xuất và Đăng nhập (Mục menu thường) */
+.header .inner-menu ul li a.nav-link {
+    /* Sử dụng lại style link menu đã định nghĩa */
+    color: #FFFFFF; 
+    text-decoration: none; 
+    font-size: 1.1rem; 
+    font-weight: 500; 
+    padding: 5px 0; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.header .inner-menu ul li a.nav-link:hover {
+    color: #88AABB; 
+    transform: translateY(-2px); 
+}
+
+/* Thêm khoảng cách nhẹ cho các mục li */
+.header .inner-menu ul li.nav-item {
+    margin-left: 20px;
+}
+
+/* Điều chỉnh lại khoảng cách ms-2 trong Pug */
+.header .inner-menu ul li a.ms-2 {
+    margin-left: 15px !important; /* Dùng !important nếu muốn override Bootstrap ms-2 */
+}
+/* end user info  */
+
+.header .inner-menu ul li a:hover::after,
+.header .inner-menu ul li a.active::after { /* Dành cho mục đang hoạt động */
+    width: 100%;
+}
+
+/* search css  */
+/* ==================================== */
+/* 🔎 HEADER SEARCH BOX STYLES */
+/* ==================================== */
+
+.header .box-search {
+    padding: 0 15px; /* Thêm padding nhẹ để không quá sát các cột khác */
+}
+
+/* Container của Form và Input/Button */
+.header .box-search .form-group {
+    /* Đảm bảo căn chỉnh và sắp xếp các thành phần con */
+    display: flex;
+    align-items: center;
+    border: 1px solid #D1D9E6; /* Viền nhẹ đồng bộ với inputs */
+    border-radius: 8px; /* Bo góc nhẹ */
+    overflow: hidden; /* Quan trọng: giúp input và button liền mạch */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.header .box-search .form-group:focus-within {
+    border-color: #4B5B6D; /* Viền đậm hơn khi focus */
+    box-shadow: 0 1px 6px rgba(75, 91, 109, 0.3); 
+}
+
+/* Input text */
+.header .box-search .form-control {
+    flex-grow: 1; /* Chiếm hết không gian còn lại */
+    border: none; /* Bỏ border mặc định của form-control */
+    border-radius: 0; /* Bỏ bo góc mặc định */
+    padding: 8px 15px;
+    font-size: 1rem;
+    height: auto;
+    box-shadow: none; /* Bỏ box-shadow mặc định */
+}
+
+.header .box-search .form-control:focus {
+    box-shadow: none;
+}
+
+/* Button Tìm kiếm */
+/* ==================================== */
+/* 🔎 HEADER SEARCH BOX STYLES (Cập nhật Button) */
+/* ==================================== */
+
+/* Container của Form và Input/Button */
+.header .box-search .form-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #D1D9E6; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.header .box-search .form-group:focus-within {
+    border-color: #4B5B6D;
+    box-shadow: 0 1px 6px rgba(75, 91, 109, 0.3); 
+}
+
+/* Input text (Giữ nguyên để đảm bảo liền mạch) */
+.header .box-search .form-control {
+    flex-grow: 1; 
+    border: none;
+    border-radius: 0; 
+    padding: 8px 15px;
+    font-size: 1rem;
+    height: auto;
+    box-shadow: none;
+}
+
+/* 🌟 CẬP NHẬT NÚT TÌM KIẾM (btn-primary) 🌟 */
+.header .box-search .btn-primary {
+    /* Sử dụng Metal Gradient mạnh hơn cho nút */
+    background: linear-gradient(90deg, #5A6D80 0%, #293846 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px; 
+    padding: 8px 18px; /* Tăng padding ngang lên 18px */
+    font-weight: 700; /* Làm chữ đậm hơn */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    white-space: nowrap; 
+    
+    /* Thiết lập border-left để phân tách với input rõ ràng hơn */
+    border-left: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: inset 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow nhấn chìm nhẹ */
+}
+
+.header .box-search .btn-primary:hover {
+    background: linear-gradient(90deg, #6C8296 0%, #354554 100%); /* Thay đổi gradient khi hover */
+    transform: none; 
+}
+
+/* ==================================== */
+/* 📱 RESPONSIVE ADJUSTMENTS (Nếu cần thu hẹp) */
+/* ==================================== */
+@media (max-width: 992px) {
+    /* Trên màn hình nhỏ hơn, giảm padding và kích thước text */
+    .header .box-search {
+        padding: 0 10px;
+    }
+    .header .box-search .form-control,
+    .header .box-search .btn-primary {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+}
+/* end search css   */
+
+/* ==================================== */
+/* 💡 SEARCH SUGGESTIONS STYLES (VER 3.0 - Căn chỉnh & Hoàn thiện) */
+/* ==================================== */
+
+.header .box-search {
+    position: relative;
+    z-index: 100;
+}
+
+.header .box-search .inner-suggest {
+    position: absolute; /* ⬅️ CHUYỂN TỪ RELATIVE SANG ABSOLUTE */
+    top: 100%; 
+    left: 0;           /* ⬅️ ĐẶT VỊ TRÍ BẮT ĐẦU TỪ BIÊN TRÁI CỦA .box-search */
+    right: 0;          /* ⬅️ KẾT THÚC Ở BIÊN PHẢI CỦA .box-search */
+    
+    /* left: 15px; */  /* XÓA: left: 15px và right: 15px sẽ làm hộp gợi ý hẹp hơn form tìm kiếm */
+    /* right: 15px; */ /* XÓA */
+
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    
+    padding: 8px 0; 
+    margin-top: 8px; 
+    max-height: 450px;
+    overflow-y: auto; 
+    display: none; 
+}
+
+/* Hiển thị khi có class .show */
+.header .box-search .inner-suggest.show {
+    display: block;
+    z-index: 1000; /* Giữ nguyên giá trị tối ưu */
+}
+.header .box-search {
+    position: relative; /* CHẮC CHẮN PHẢI CÓ ĐỂ .inner-suggest DỰA VÀO */
+    z-index: 100;
+    padding: 0 15px;
+}
+
+/* Mục gợi ý */
+.header .box-search .inner-suggest .inner-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px; /* Tối ưu hóa padding dọc để item trông không quá dày */
+    text-decoration: none;
+    color: #4B5B6D;
+    transition: background 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.header .box-search .inner-suggest .inner-item:hover {
+    background: #F0F2F5; 
+    transform: translateX(3px); /* Hiệu ứng trượt nhẹ nổi bật hơn */
+}
+
+/* 🎯 Hình ảnh đại diện (Tối ưu căn chỉnh) */
+.header .box-search .inner-suggest .inner-image {
+    width: 48px; /* Tăng kích thước ảnh lên 48px */
+    height: 48px;
+    overflow: hidden;
+    border-radius: 6px; 
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Shadow nhẹ làm nổi ảnh */
+}
+
+.header .box-search .inner-suggest .inner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Thông tin chi tiết */
+.header .box-search .inner-suggest .inner-info {
+    /* Đã được căn giữa theo chiều dọc nhờ align-items: center trên .inner-item */
+    flex-grow: 1;
+    overflow: hidden;
+    /* Căn chỉnh lại các thành phần con để chúng không bị quá sát */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Căn giữa nội dung info nếu có không gian */
+}
+
+/* Tiêu đề bài hát */
+.header .box-search .inner-suggest .inner-title {
+    font-weight: 700; 
+    font-size: 1.05rem; 
+    color: #293846; 
+    /* Đảm bảo không có margin/padding thừa */
+    margin-bottom: 2px; 
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+/* Ca sĩ */
+.header .box-search .inner-suggest .inner-singer {
+    font-size: 0.9rem; /* Giảm nhẹ để phân biệt với title */
+    color: #6c757d;
+    margin-top: 0; /* Đã xử lý khoảng cách bằng margin-bottom trên title */
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header .box-search .inner-suggest .inner-singer i {
+    color: #88AABB; 
+    margin-right: 5px;
+    font-size: 0.85rem; /* Giảm icon nhẹ */
+}
+
+/* topic item  */
+.card{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card img {
+  width: 75%; /* Chiếm toàn bộ chiều rộng của thẻ .card (đã là 50% hàng) */
+  height: 360px; /* Chiều cao cố định */
+  object-fit: cover; /* Giữ tỷ lệ ảnh và lấp đầy khung 250px */
+  border-radius: 12px;
+  margin-top: 10px;
+}
+/* end topic item  */
+
+
+/* box head  */
+.box-head h1,
+.box-head h2,
+.box-head h3 {
+    color: #3A4958;
+    /* Màu dự phòng: Xám xanh đậm (để phù hợp với background Kim Loại) */
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    background: linear-gradient(90deg, #88AABB, #4B5B6D);
+    /* Gradient Bạc: Bạc sáng -> Xám xanh đậm */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* hiệu ứng gradient chữ */
+    margin-bottom: 20px;
+}
+
+.box-head {
+    color: #3A4958;
+    /* Điều chỉnh màu dự phòng cho .box-head */
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* end box head  */
+
+
+/* song item  */
+.row {
+  /* Kích hoạt Flexbox trên hàng để căn chỉnh các cột con */
+  display: flex;
+  flex-wrap: wrap; /* Cho phép tự động xuống dòng khi cần, nhưng giữ cố định 2 item */
+}
+
+.col-6 {
+  /* Đảm bảo mỗi item (.song-item) chiếm hết chiều cao của cột */
+  display: flex;
+}
+
+.song-item {
+  /* Kế thừa từ .col-6, đảm bảo chiếm toàn bộ chiều cao */
+  height: 100%; 
+  /* ... giữ nguyên các thuộc tính hiển thị khác của bạn ... */
+}
+.song-item {
+  width: 100%;
+  display: flex; /* Dùng Flexbox để căn chỉnh ảnh và nội dung cạnh nhau */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  padding: 10px;
+  border: 1px solid #4B5B6D; /* Viền xám đậm */
+  border-radius: 8px;
+  background-color: #1A2937; /* Nền xanh than (tông màu header cũ) */
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.song-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: #293846; /* Nền tối hơn khi hover */
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 3. Định dạng Ảnh (inner-image) */
+/* ---------------------------------------------------------------------- */
+.song-item .inner-image {
+  flex-shrink: 0; /* Không co lại khi không gian hẹp */
+  width: 90px; /* Chiều rộng cố định cho ảnh */
+  height: 90px; /* Chiều cao cố định (Tạo hình vuông 1:1) */
+  margin-right: 15px;
+  overflow: hidden; /* Cắt bớt phần ảnh thừa */
+  border-radius: 4px;
+}
+
+.song-item .inner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
+}
+
+/* ---------------------------------------------------------------------- */
+/* 4. Định dạng Nội dung (inner-content) */
+/* ---------------------------------------------------------------------- */
+.song-item .inner-content {
+  flex-grow: 1; /* Cho phép phần nội dung chiếm hết không gian còn lại */
+  display: flex;
+  flex-direction: column;
+}
+
+.song-item .inner-title a {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #88AABB; /* Màu bạc sáng cho tiêu đề */
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* ... khi quá dài */
+}
+
+.song-item .inner-singer,
+.song-item .inner-like,
+.song-item .inner-time {
+  font-size: 0.85rem;
+  color: #AABBCF; /* Màu chữ phụ nhẹ nhàng */
+  line-height: 1.5;
+}
+
+.song-item i {
+  margin-right: 5px;
+  color: #4B5B6D; /* Màu icon xám đậm nổi bật nhẹ */
+}
+/* end song item  */
+
+/* song detail css  */
+
+/* ====================================================================== */
+/* CẤU HÌNH TỔNG QUÁT VÀ TIÊU ĐỀ */
+/* ====================================================================== */
+/* ====================================================================== */
+/* CẤU HÌNH TỔNG QUÁT VÀ TIÊU ĐỀ */
+/* ====================================================================== */
+.singer-detail {
+    /* Nền chính: Xám Than (giống tông đậm nhất của Header/Footer) */
+    background-color: #121C26; 
+    color: #fff;
+    padding-bottom: 50px;
+}
+
+.singer-detail .inner-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    /* Gradient chữ Bạc/Kim loại sắc nét hơn */
+    background: linear-gradient(90deg, #E0E7ED 0%, #88AABB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; 
+}
+
+/* ====================================================================== */
+/* KHU VỰC THÔNG TIN & HÀNH ĐỘNG (.inner-actions) */
+/* ====================================================================== */
+.inner-actions {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px 30px; 
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    /* Viền ngăn cách: Xám than lạnh */
+    border-bottom: 1px solid rgba(75, 91, 109, 0.5); 
+}
+
+.inner-action {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    /* Màu chữ phụ: Xám bạc trung tính */
+    color: #C0C8D0; 
+    font-weight: 500;
+}
+
+.inner-action i {
+    font-size: 1.1rem;
+    margin-right: 8px;
+    /* Màu icon: Xám xanh đậm */
+    color: #4B5B6D; 
+}
+
+/* Hiệu ứng đặc biệt nút like  */
+.inner-like i{
+    cursor: pointer;
+    color: #0059FF;
+    transition: color 0.3s ease;
+}
+.inner-like:hover i{
+    /* Màu nổi bật: Xanh ngọc hoặc Xanh sáng */
+    color: #00CFFF; 
+}
+
+.singer-detail .inner-like.active {
+    color: #0059FF; 
+}
+.inner-like.active i{
+    font-weight: 900;
+}
+/* end nút like  */
+/* Hiệu ứng đặc biệt cho nút hành động (Yêu thích) */
+.inner-heart i{
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #f814d6; 
+}
+
+.inner-heart:hover i{
+    /* Màu nổi bật: Xanh ngọc hoặc Xanh sáng */
+    color: #f85be1; 
+}
+.singer-detail .inner-heart.active {
+    color: #f814d6;
+}
+.inner-heart.active i{
+    font-weight: 900!important;
+    /* color: #f814d6;  */
+}
+
+/* ====================================================================== */
+/* KHU VỰC CHƠI NHẠC (.inner-play) */
+/* ====================================================================== */
+.inner-play {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 1. ĐỊNH NGHĨA KEYFRAMES (HIỆU ỨNG QUAY) */
+/* ---------------------------------------------------------------------- */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. ÁP DỤNG ANIMATION CHO AVATAR */
+/* ---------------------------------------------------------------------- */
+.inner-avatar img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 8px rgba(136, 170, 187, 0.1), 0 0 25px rgba(0, 0, 0, 0.6);
+    
+    /* Áp dụng hiệu ứng quay tròn */
+    animation: spin 10s linear infinite; /* Quay 10 giây/vòng, tốc độ đều, lặp vô hạn */
+    animation-play-state: paused;
+    /* Chỉnh lại transition và transform cho hiệu ứng hover (nếu cần) */
+    transition: all 0.4s ease;
+}
+
+/* Loại bỏ transform: scale/rotate khi hover, nếu bạn muốn chỉ có hiệu ứng quay */
+.inner-avatar img:hover {
+    animation-play-state: paused; /* Ngừng quay khi di chuột qua  - running xoay*/ 
+    /* Bạn có thể thêm lại hiệu ứng scale/rotate khác nếu thích: 
+    transform: scale(1.05); */
+}
+
+.inner-avatar img:hover {
+    transform: scale(1.02) rotate(1deg); 
+}
+
+.inner-audio {
+    flex-grow: 1;
+}
+
+/* Audio Player */
+/* .inner-audio audio {
+    width: 100%;
+    min-width: 300px;
+    border-radius: 50px; */
+    /* Nền audio player: Xám trung tính */
+    /* background: #4B5B6D;  */
+/* } */
+.aplayer-title,
+.aplayer-author {
+  color: black !important;
+  font-weight: bold;
+}
+
+/* ====================================================================== */
+/* MÔ TẢ & LỜI BÀI HÁT (.inner-desc) */
+/* ====================================================================== */
+.inner-desc {
+    margin-bottom: 30px;
+    padding: 20px;
+    /* Nền khối nội dung: Xám than đậm hơn một chút */
+    background-color: #1A2937; 
+    border-radius: 10px;
+    border: 1px solid #293846;
+}
+
+.inner-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    /* Màu nhãn: Bạc/Xám sáng */
+    color: #88AABB; 
+    /* Đường kẻ phân cách: Xám xanh đậm */
+    border-bottom: 2px solid #4B5B6D; 
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.inner-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #E0E7ED; 
+    white-space: pre-wrap; 
+}
+
+
+
+/* end song detail css   */
+
+
+/* footer  */
+
+.footer {
+    background: linear-gradient(90deg, #4B5B6D, #293846);
+    /* Màu Nền: Xám xanh -> Xám than đậm (Bạc Kim Loại) */
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Hiệu ứng sáng phía trên footer (Sử dụng màu bạc sáng hơn) */
+.footer::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #88AABB, #667788);
+    /* Hiệu ứng sáng: Xám bạc nhạt */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Hover nhẹ (Chuyển sang tông tối và đậm hơn một chút) */
+.footer:hover {
+    background: linear-gradient(90deg, #3A4958, #1A2834);
+    /* Hover: Tối hơn để tạo cảm giác nhấn */
+    transition: background 0.3s ease;
+}
+
+/* end footer  */
+
+
+
+/* register css  */
+/* ==================================== */
+/* 🚀 REGISTER PAGE STYLES */
+/* ==================================== */
+
+.register-page {
+    padding: 60px 0; /* Khoảng cách trên dưới */
+    min-height: calc(100vh - 100px); /* Đảm bảo chiều cao trang đủ (ví dụ trừ đi chiều cao header/footer) */
+    background: #E8EDF1; /* Nền xám nhạt, sạch sẽ */
+}
+
+/* BOX CONTAINER */
+.register-box {
+    background: #FFFFFF; /* Nền trắng */
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05); /* Shadow tinh tế */
+    transition: transform 0.3s ease;
+}
+
+.register-box:hover {
+    transform: translateY(-3px); /* Hiệu ứng nhấc nhẹ khi hover (nếu muốn) */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADING */
+.register-box h1 {
+    /* Áp dụng lại phong cách Metal Gradient cho tiêu đề form */
+    color: #3A4958;
+    font-weight: 700;
+    font-size: 2rem;
+    background: linear-gradient(90deg, #88AABB, #4B5B6D); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px !important; 
+}
+
+/* FORM LABELS */
+.register-box label {
+    font-weight: 600;
+    color: #4B5B6D; /* Màu xám xanh đậm, dễ đọc */
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* FORM INPUTS */
+.register-box .form-control {
+    border-radius: 8px;
+    border: 1px solid #D1D9E6; /* Viền nhẹ */
+    padding: 10px 15px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.register-box .form-control:focus {
+    border-color: #4B5B6D; /* Viền đậm hơn khi focus */
+    box-shadow: 0 0 0 0.25rem rgba(75, 91, 109, 0.25); /* Focus ring tùy chỉnh */
+}
+
+/* SUBMIT BUTTON (btn-gradient) */
+.btn-gradient {
+    /* Sử dụng gradient kim loại/xanh đen làm nút chính */
+    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(41, 56, 70, 0.3); /* Shadow cho nút */
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); /* Thay đổi gradient khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nhấc nhẹ */
+    box-shadow: 0 6px 15px rgba(41, 56, 70, 0.4);
+    color: #FFFFFF;
+}
+
+/* LOGIN LINK */
+.register-page p.text-center {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.register-page a.text-primary {
+    color: #4B5B6D !important; /* Thay màu xanh primary của Bootstrap thành màu chủ đạo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-page a.text-primary:hover {
+    color: #88AABB !important; /* Màu bạc sáng khi hover */
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 📱 RESPONSIVE ADJUSTMENTS (Optional) */
+/* ==================================== */
+@media (max-width: 576px) {
+    .register-page {
+        padding: 30px 15px;
+    }
+    .register-box {
+        padding: 30px 25px;
+    }
+    .register-box h1 {
+        font-size: 1.75rem;
+    }
+}
+/* end register css  */
+
+
+/* login css  */
+/* ==================================== */
+/* 🔑 LOGIN PAGE STYLES */
+/* ==================================== */
+
+.login-page {
+    /* Sử dụng lại phong cách nền của trang đăng ký */
+    padding: 60px 0;
+    min-height: calc(100vh - 100px); 
+    background: #E8EDF1; 
+    display: flex; /* Căn giữa form theo chiều dọc và ngang */
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGIN CARD CONTAINER */
+.login-card {
+    /* Style tương tự như .register-box */
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    max-width: 400px; /* Giữ form nhỏ gọn hơn (tùy chỉnh) */
+    width: 100%;
+}
+
+.login-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADING */
+.login-card h1 {
+    /* Áp dụng lại phong cách Metal Gradient cho tiêu đề form */
+    color: #3A4958;
+    font-weight: 700;
+    font-size: 2rem;
+    background: linear-gradient(90deg, #88AABB, #4B5B6D); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px !important; 
+}
+
+/* FORM LABELS */
+.login-card label {
+    font-weight: 600;
+    color: #4B5B6D; 
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* FORM INPUTS */
+.login-card .form-control {
+    border-radius: 8px;
+    border: 1px solid #D1D9E6; 
+    padding: 10px 15px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.login-card .form-control:focus {
+    border-color: #4B5B6D; 
+    box-shadow: 0 0 0 0.25rem rgba(75, 91, 109, 0.25); 
+}
+
+/* LOGIN BUTTON (btn-login) */
+.btn-login {
+    /* Sử dụng lại gradient kim loại/xanh đen làm nút chính */
+    background: linear-gradient(90deg, #4B5B6D 0%, #293846 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(41, 56, 70, 0.3); 
+}
+
+.btn-login:hover {
+    background: linear-gradient(90deg, #5A6D80 0%, #354554 100%); 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(41, 56, 70, 0.4);
+    color: #FFFFFF;
+}
+
+/* FORGOT PASSWORD LINK */
+.login-card .forgot-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-card .forgot-link:hover {
+    color: #4B5B6D; /* Màu chủ đạo khi hover */
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 📱 RESPONSIVE ADJUSTMENTS */
+/* ==================================== */
+@media (max-width: 576px) {
+    .login-page {
+        padding: 30px 15px;
+    }
+    .login-card {
+        padding: 30px 25px;
+    }
+    .login-card h1 {
+        font-size: 1.75rem;
+    }
+}
+/* Đã có trong CSS trang Đăng ký, nhưng cần đảm bảo áp dụng cho trang Đăng nhập */
+
+.login-card p.text-center {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.login-card a.text-primary {
+    color: #4B5B6D !important; /* Màu chủ đạo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 600; /* Đảm bảo chữ Đăng ký đậm */
+}
+
+.login-card a.text-primary:hover {
+    color: #88AABB !important; 
+    text-decoration: underline;
+}
+/* end login css  */
+
+/* alert css  */
+
+/* ==================================== */
+/* 🔔 ALERT MESSAGES STYLES */
+/* ==================================== */
+
+/* Container chung cho các thông báo */
+[show-alert] {
+    position: fixed;
+    top: 20px; /* Vị trí phía trên */
+    right: 280px; /* Vị trí bên phải */
+    z-index: 1050; /* Đảm bảo nằm trên các thành phần khác */
+    
+    /* Thiết kế chung */
+    padding: 15px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* opacity: 0; Mặc định ẩn, sẽ hiển thị bằng JS */
+    /* visibility: hidden; */
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateX(100%); /* Bắt đầu từ ngoài màn hình */
+    min-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Khi thông báo được hiển thị (có thể thêm class .show bằng JS) */
+/* [show-alert].show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); Trượt vào từ bên phải */
+/* } */
+
+/* --- SUCCESS ALERT --- */
+.alert-success {
+    /* Màu xanh lá cây thân thiện, phối hợp với màu chủ đạo */
+    background: linear-gradient(135deg, #A8E6CF 0%, #00BFA5 100%); 
+    color: #005A4E; /* Màu chữ xanh đậm */
+    border: 1px solid #00BFA5;
+}
+
+/* --- ERROR ALERT --- */
+.alert-danger {
+    /* Màu đỏ đậm, chuyên nghiệp, phối hợp với màu chủ đạo */
+    background: linear-gradient(135deg, #FFC1CC 0%, #D32F2F 100%); 
+    color: #4B0000; /* Màu chữ đỏ đậm */
+    border: 1px solid #D32F2F;
+}
+
+
+/* CLOSE BUTTON (x) */
+[close-alert] {
+    margin-left: 15px;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+[close-alert]:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Đảm bảo màu chữ 'x' rõ ràng trên nền */
+.alert-success [close-alert] {
+    color: #005A4E; 
+}
+.alert-danger [close-alert] {
+    color: #4B0000;
+}
+[show-alert].alert-hidden {
+  animation-name: alert-hidden;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.alert-hidden {
+  display: none;
+}
+/* end alert css  */
+
+
