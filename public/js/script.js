@@ -72,7 +72,7 @@ if (song) {
         ap.on('pause', function () {
             avatar.style.animationPlayState = 'paused'; // Dừng quay khi tạm dừng nhạc
         });
-
+        ap.setLyricsOffset(-400); // sớm 400ms
         
     }
 }

@@ -12,5 +12,20 @@ router.get('/', controller.index);
 
 router.get('/create', controller.create);
 
-router.post('/create',  upload.fields([{ name: "avatar", maxCount: 1 }, { name: "audio", maxCount: 1 }]), uploadToCloud.uploadSingle, validate.createPost, controller.createPost);
+router.post(
+    '/create',
+    upload.fields([{ name: "avatar", maxCount: 1 },
+    { name: "audio", maxCount: 1 }]),
+    uploadToCloud.uploadFields,
+    validate.createPost,
+    controller.createPost
+);
+
+router.get('/edit/:id', controller.edit);
+
+router.patch('/edit/:id', upload.fields([{ name: "avatar", maxCount: 1 },
+    { name: "audio", maxCount: 1 }]),
+    uploadToCloud.uploadFields,
+    validate.editPatch,
+    controller.editPatch);
 export const SongRoutes = router;

@@ -10,3 +10,14 @@ export const createPost = (req: Request, res: Response, next: NextFunction) => {
     }
     next();
 };
+
+export const editPatch = (req: Request, res: Response, next: NextFunction) => {
+    // console.log(req.body);
+    const {title} = req.body;
+    if (!title) {
+        req.flash("error", "Vui lòng điền đầy đủ thông tin");
+        res.redirect(req.get('Referer'));
+        return;
+    }
+    next();
+};

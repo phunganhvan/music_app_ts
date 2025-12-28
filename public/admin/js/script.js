@@ -33,6 +33,13 @@ const audioUpload = document.querySelector("[upload-audio]");
 if( audioUpload){
     const uploadAudioInput = document.querySelector("[upload-audio-input]");
     const uploadAudioPreview = document.querySelector("[upload-audio-play]");
+    const src= uploadAudioPreview.querySelector("source").src;
+    // console.log(src);
+    if( src !=""){
+        // console.log(uploadAudioPreview.src);
+        audioUpload.classList.add("active");
+    }
+    
     uploadAudioInput.addEventListener("change", (e) => {
         if(e.target.files.length > 0){
             const audio = URL.createObjectURL(e.target.files[0]);
