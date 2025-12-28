@@ -2,7 +2,11 @@ console.log('tinymce config loaded');
 tinymce.init({
   selector: '.textarea-mce',
   license_key: 'gpl',
-  plugins: 'advlist link image lists',
+  plugins: 'advlist link image lists code',
+  image_title: true,
+  image_upload_url: '/admin/upload', // link up ảnh
+  automatic_uploads: true,
+  file_picker_types: 'image',
   file_picker_callback: (cb, value, meta) => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
