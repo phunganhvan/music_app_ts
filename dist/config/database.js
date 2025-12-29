@@ -16,7 +16,7 @@ exports.connect = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const connect = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(process.env.MONGO_URL);
+        yield mongoose_1.default.connect(process.env.MONGO_URL || 'mongodb+srv://legiabaoprovanai:Abcd1234567890@cluster0.y66f1qv.mongodb.net/music-app');
         console.log("Connected to MongoDB successfully");
     }
     catch (error) {
