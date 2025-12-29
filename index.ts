@@ -14,7 +14,7 @@ import moment from 'moment';
 import AdminRoute from './routes/admin/index.route';
 import { systemConfig } from './config/config';
 import path from 'path';
-import pug from 'pug';
+import 'pug';
 
 
 import bodyParser from 'body-parser';
