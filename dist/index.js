@@ -49,6 +49,7 @@ const moment_1 = __importDefault(require("moment"));
 const index_route_2 = __importDefault(require("./routes/admin/index.route"));
 const config_1 = require("./config/config");
 const path_1 = __importDefault(require("path"));
+require("pug");
 const body_parser_1 = __importDefault(require("body-parser"));
 dotenv_1.default.config();
 database.connect();
