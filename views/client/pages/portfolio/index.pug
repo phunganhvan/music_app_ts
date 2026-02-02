@@ -1,0 +1,85 @@
+extends ../../layout/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/moment.pug
+
+block main
+    .container.my-3
+        .row
+            .col-12
+                +box-head(pageTitle)
+        
+        // User Profile Section
+        .row.mb-4
+            .col-12
+                .card
+                    .card-body
+                        .row.align-items-center
+                            .col-md-3.text-center
+                                if user.avatar
+                                    img(src=user.avatar width="150px" class="rounded-circle mb-3")
+                                else
+                                    img(src="/admin/images/avatar.png" width="150px" class="rounded-circle mb-3")
+                            .col-md-9
+                                h3 #{user.fullName}
+                                if user.email
+                                    p.text-muted
+                                        i.fa-solid.fa-envelope.me-2
+                                        | #{user.email}
+                                if user.phone
+                                    p.text-muted
+                                        i.fa-solid.fa-phone.me-2
+                                        | #{user.phone}
+                                if user.description
+                                    p.mt-2 #{user.description}
+        
+        // Statistics Section
+        .row.mb-4
+            .col-md-4.mb-3
+                .card.text-center
+                    .card-body
+                        h3.text-primary #{stats.totalSongs}
+                        p.text-muted Bài hát yêu thích
+            .col-md-4.mb-3
+                .card.text-center
+                    .card-body
+                        h3.text-danger #{stats.totalLikes}
+                        p.text-muted Tổng lượt thích
+            .col-md-4.mb-3
+                .card.text-center
+                    .card-body
+                        h3.text-success #{stats.totalListens}
+                        p.text-muted Tổng lượt nghe
+        
+        // Songs Section
+        .row.mb-3
+            .col-12
+                h4.mb-3 Bài hát yêu thích của tôi
+        
+        if songs && songs.length > 0
+            .row
+                each song in songs
+                    .col-6.col-md-4.mb-3
+                        div(class="song-item")
+                            div(class="inner-image")
+                                a(href=`/songs/detail/${song.slug}`)
+                                    img(src=song.avatar, alt=song.title)
+                            div(class="inner-content")
+                                div(class="inner-title")
+                                    a(href=`/songs/detail/${song.slug}`) #{song.title}
+                                div(class="inner-singer")
+                                    i(class="fa-solid fa-microphone-lines") 
+                                    if song.singerInfo
+                                        |  #{song.singerInfo.fullName}
+                                div(class="inner-stats")
+                                    span.me-3
+                                        i.fa-solid.fa-heart.text-danger.me-1
+                                        | #{song.like || 0}
+                                    span
+                                        i.fa-solid.fa-headphones.text-primary.me-1
+                                        | #{song.listen || 0}
+        else
+            .row
+                .col-12
+                    .alert.alert-info.text-center
+                        p Bạn chưa có bài hát yêu thích nào.
+                        a.btn.btn-primary(href="/topics") Khám phá ngay

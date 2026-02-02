@@ -7,6 +7,7 @@ import * as userMiddleware from "../../middlewares/client/user.middleware";
 import FavoriteSong from "../../models/favorite-song.model";
 import { favoriteSongRouter } from "./favoriteSong.route";
 import { SearchRoutes } from "./search.route";
+import { PortfolioRoute } from "./portfolio.route";
 
 const ClientRoute = (app: Express): void => {
    
@@ -17,6 +18,7 @@ const ClientRoute = (app: Express): void => {
     app.use('/user', UserRoute);
     app.use('/favorite-songs', favoriteSongRouter);
     app.use('/search', SearchRoutes);
+    app.use('/portfolio', PortfolioRoute);
 }
 
 export default ClientRoute;
