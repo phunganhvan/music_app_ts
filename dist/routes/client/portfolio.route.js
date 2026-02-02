@@ -33,20 +33,10 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-const topic_route_1 = require("./topic.route");
-const song_route_1 = require("./song.route");
-const user_route_1 = require("./user.route");
-const userMiddleware = __importStar(require("../../middlewares/client/user.middleware"));
-const favoriteSong_route_1 = require("./favoriteSong.route");
-const search_route_1 = require("./search.route");
-const portfolio_route_1 = require("./portfolio.route");
-const ClientRoute = (app) => {
-    app.use(userMiddleware.infoUser);
-    app.use(`/topics`, topic_route_1.TopicRoute);
-    app.use('/songs', song_route_1.SongRoute);
-    app.use('/user', user_route_1.UserRoute);
-    app.use('/favorite-songs', favoriteSong_route_1.favoriteSongRouter);
-    app.use('/search', search_route_1.SearchRoutes);
-    app.use('/portfolio', portfolio_route_1.PortfolioRoute);
-};
-exports.default = ClientRoute;
+exports.PortfolioRoute = void 0;
+const express_1 = require("express");
+const router = (0, express_1.Router)();
+const controller = __importStar(require("../../controllers/client/portfolio.controller"));
+const authMiddleware = __importStar(require("../../middlewares/client/auth.middleware"));
+router.get('/', authMiddleware.requireAuth, controller.index);
+exports.PortfolioRoute = router;
