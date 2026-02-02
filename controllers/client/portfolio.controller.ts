@@ -3,7 +3,7 @@ import FavoriteSong from "../../models/favorite-song.model";
 import Song from "../../models/song.model";
 import Singer from "../../models/singer.model";
 
-// [GET] /user/portfolio
+// [GET] /portfolio
 export const index = async (req: Request, res: Response) => {
     const user = res.locals.user;
     
@@ -22,15 +22,30 @@ export const index = async (req: Request, res: Response) => {
         deleted: false,
     }).select("title avatar slug singerId like listen");
     
+    // Create a map of favorite songs for O(1) lookup
+    const favoriteSongsMap = new Map(
+        favoriteSongs.map(fav => [fav.songId, fav])
+    );
+    
+    // Get all unique singer IDs
+    const singerIds = [...new Set(songs.map(song => song.singerId))];
+    
+    // Fetch all singers in one query
+    const singers = await Singer.find({
+        _id: { $in: singerIds },
+        status: "active",
+        deleted: false,
+    }).select("fullName avatar");
+    
+    // Create a map of singers for O(1) lookup
+    const singersMap = new Map(
+        singers.map(singer => [singer._id.toString(), singer])
+    );
+    
     // Add singer info to each song
     for (let song of songs) {
-        const singerInfo = await Singer.findOne({
-            _id: song.singerId,
-            status: "active",
-            deleted: false,
-        }).select("fullName avatar");
-        
-        const favoriteSong = favoriteSongs.find(fav => fav.songId === song._id.toString());
+        const singerInfo = singersMap.get(song.singerId);
+        const favoriteSong = favoriteSongsMap.get(song._id.toString());
         
         song["singerInfo"] = singerInfo;
         song["addedAt"] = favoriteSong?.createdAt;

@@ -28,13 +28,17 @@ const index = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         status: "active",
         deleted: false,
     }).select("title avatar slug singerId like listen");
+    const favoriteSongsMap = new Map(favoriteSongs.map(fav => [fav.songId, fav]));
+    const singerIds = [...new Set(songs.map(song => song.singerId))];
+    const singers = yield singer_model_1.default.find({
+        _id: { $in: singerIds },
+        status: "active",
+        deleted: false,
+    }).select("fullName avatar");
+    const singersMap = new Map(singers.map(singer => [singer._id.toString(), singer]));
     for (let song of songs) {
-        const singerInfo = yield singer_model_1.default.findOne({
-            _id: song.singerId,
-            status: "active",
-            deleted: false,
-        }).select("fullName avatar");
-        const favoriteSong = favoriteSongs.find(fav => fav.songId === song._id.toString());
+        const singerInfo = singersMap.get(song.singerId);
+        const favoriteSong = favoriteSongsMap.get(song._id.toString());
         song["singerInfo"] = singerInfo;
         song["addedAt"] = favoriteSong === null || favoriteSong === void 0 ? void 0 : favoriteSong.createdAt;
     }
